@@ -1,0 +1,18 @@
+@use "sass:math";
+
+// Conversion of PX font-Size in REM
+@mixin font-size($sizeValue) {
+  font-size: math.div($sizeValue, 16) + rem;
+}
+
+$breakpoint : (
+    "phone": 0px,
+    "desktop": 1024px,
+);
+
+// Breakpoint Mixin
+@mixin media($key) {
+    @media screen and (min-width: map-get($breakpoint, $key )) {
+        @content
+    } 
+}

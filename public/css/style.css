@@ -1,0 +1,339 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "lato", sans-serif;
+  font-size: 100%;
+  font-weight: 400;
+  line-height: 1.5;
+}
+html body {
+  position: relative;
+  margin: 0px;
+  width: 100%;
+}
+@media screen and (min-width: 0px) {
+  html body {
+    padding: 0px 20px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  html body {
+    padding: 0px 100px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  html body {
+    max-width: 1440px;
+  }
+}
+
+header figure {
+  width: max-content;
+  margin: 42px auto 17px auto;
+}
+header figure img {
+  height: 93px;
+  width: auto;
+}
+
+#search {
+  position: relative;
+}
+#search input {
+  width: 100%;
+  height: 69px;
+  background-color: #E7E7E7;
+  border: 0px;
+  border-radius: 5px;
+  padding: 22px;
+  margin: 0 0 25px 0;
+  display: block;
+}
+#search input:placeholder-shown {
+  font-size: 1.125rem;
+  color: rgba(0, 0, 0, 0.25);
+}
+#search p {
+  position: absolute;
+  right: 22px;
+  top: 11px;
+  margin: 0;
+  font-size: 2rem;
+}
+
+#tag ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  margin: 0 0 20px 0;
+}
+#tag ul li {
+  height: 37px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 15px;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.875rem;
+}
+#tag ul li i {
+  margin-left: 13px;
+  font-size: 1.25rem;
+}
+#tag ul.ingredient li {
+  background-color: #3282F7;
+}
+#tag ul.appareil li {
+  background-color: #68D9A4;
+}
+#tag ul.ustensiles li {
+  background-color: #ED6454;
+}
+
+#filter {
+  display: flex;
+}
+#filter ul.dropdown {
+  z-index: 10;
+  list-style: none;
+  position: relative;
+  width: 180px;
+  height: 69px;
+  cursor: pointer;
+  margin: 0 20px 0 0px;
+  padding: 0 0 0;
+  border-radius: 5px;
+}
+@media screen and (min-width: 0px) {
+  #filter ul.dropdown {
+    display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #filter ul.dropdown {
+    display: block;
+  }
+}
+#filter ul.dropdown li.label {
+  position: absolute;
+  top: 18px;
+  left: -90px;
+  background: #fff;
+  color: black;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+#filter ul.dropdown li#selected {
+  list-style-position: inside;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  height: 69px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#filter ul.dropdown li#selected button {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 0px 15px;
+  color: white;
+  border-radius: 5px;
+  text-align: left;
+  cursor: pointer;
+  border: 0;
+}
+#filter ul.dropdown li#selected button:focus {
+  border: 2px solid black;
+}
+#filter ul.dropdown li.list-container {
+  position: relative;
+}
+#filter ul.dropdown li.list-container ul.list li.list-item {
+  padding: 15px 0px 15px 15px;
+  transition: background-color 0.1s linear, color 0.1s linear;
+  color: white;
+  list-style-position: inside;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 700;
+  position: relative;
+  font-size: 1.125rem;
+}
+#filter ul.dropdown li.list-container ul.list li.list-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  right: 5%;
+  background-color: white;
+  height: 1px;
+  width: 90%;
+}
+#filter ul.dropdown li.list-container ul.list li.list-item:hover, #filter ul.dropdown li.list-container ul.list li.list-item:focus {
+  background-color: #3282F7;
+  color: black;
+  border: 2px solid black;
+}
+#filter ul.dropdown li.list-container ul.list li.list-item:last-child::after {
+  display: none;
+}
+#filter ul.dropdown::before {
+  content: "";
+  position: absolute;
+  z-index: 11;
+  right: 10px;
+  top: 24px;
+  transition: transform 0.2s linear;
+  color: white;
+  font-weight: 900;
+  font-family: "FontAwesome";
+}
+#filter ul.dropdown.appareil {
+  background: #68D9A4;
+}
+#filter ul.dropdown.ustensiles {
+  background: #ED6454;
+}
+#filter ul.dropdown.ingredient {
+  background: #3282F7;
+}
+#filter ul.dropdown.arrowOpen::before {
+  transform: rotate(-180deg);
+}
+#filter ul.list {
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  top: -57px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  transition: opacity 0.1s cubic-bezier(0, 0, 0.38, 0.9), max-height 0.5s cubic-bezier(0, 0, 0.38, 0.9);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #3282F7;
+  border-radius: 5px;
+}
+#filter ul.open {
+  opacity: 1;
+  overflow: auto;
+  max-height: 15rem;
+}
+
+#recipes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 25px;
+}
+#recipes article {
+  background-color: #E7E7E7;
+  border-radius: 5px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  margin-bottom: 50px;
+}
+@media screen and (min-width: 0px) {
+  #recipes article {
+    width: 100%;
+    margin-right: 0px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #recipes article {
+    width: 30%;
+    margin-right: 5%;
+  }
+}
+#recipes article figure {
+  width: 100%;
+  height: 178px;
+  margin: 0;
+}
+#recipes article figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px 5px 0px 0px;
+}
+#recipes article h2 {
+  font-weight: 400;
+  font-size: 1.125rem;
+  margin: 20px 5px 20px 20px;
+  width: 53%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#recipes article p.times {
+  white-space: nowrap;
+  margin: 20px 20px 20px 5px;
+  text-align: right;
+  font-weight: 700;
+}
+#recipes article ul {
+  margin: 0px 20px 20px 20px;
+  padding: 0px;
+  list-style: none;
+}
+@media screen and (min-width: 0px) {
+  #recipes article ul {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #recipes article ul {
+    flex: 1;
+  }
+}
+#recipes article ul li {
+  font-size: 0.75rem;
+}
+#recipes article ul li span {
+  font-weight: 700;
+}
+#recipes article p.recipe {
+  font-family: "Roboto", sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.75rem;
+  flex: 1;
+  margin: 0px 20px 20px 0px;
+  height: 100%;
+}
+@media screen and (min-width: 0px) {
+  #recipes article p.recipe {
+    margin-left: 20px;
+    height: 50px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #recipes article p.recipe {
+    margin-left: 0px;
+    height: 109px;
+  }
+}
+#recipes article:nth-child(3n+0) {
+  margin-right: 0 !important;
+}
+
+/*# sourceMappingURL=style.css.map */

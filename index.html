@@ -10,15 +10,143 @@
         <!-- Google font DM Sans 400 500 et 700-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,400&family=Roboto&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto&display=swap" rel="stylesheet"> 
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" />
         <title>Les petits plats</title>
     </head>
     <body>
-        <header></header>
-        <main></main>
+        <header>
+          <figure>
+            <img src="public/images/logo.png" alt="Page d'accueil - Les petits plats" />
+          </figure>
+        </header>
+        <main>
+          <section id="search">
+            <input type="search" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette" />
+            <p><i class="fas fa-search"></i></p>
+          </section>
+          <section id="tag">
+            <ul class="ingredient">
+              <li>TAGounet 1 <i class="far fa-times-circle"></i></li>
+              <li>TAG 1 <i class="far fa-times-circle"></i></li>
+            </ul>
+            <ul class="appareil">
+              <li>TAG 2 <i class="far fa-times-circle"></i></li>
+              <li>TAG 1 <i class="far fa-times-circle"></i></li>
+            </ul>
+            <ul class="ustensiles">
+              <li>TAG 3 <i class="far fa-times-circle"></i></li>
+              <li>TAG 1 <i class="far fa-times-circle"></i></li>
+            </ul>
+          </section>
+          <section id="filter">
+            <ul class="dropdown ingredient">
+              <li id="selected">
+                <button aria-haspopup="true" tabindex="10" aria-label="Trier les images">Ingredients</button>
+              </li>
+              <li aria-expanded="false" class="list-container">
+                <ul class="list" role="listbox">
+                  <li class="list-item activePop" tabindex="10" id="option-1" role="option" aria-label="Trier par popularité">
+                    Ingredients 1
+                  </li>
+                  <li class="list-item" tabindex="10" id="option-2" role="option" aria-label="Trier par Date">
+                    Ingredients 2
+                  </li>
+                  <li class="list-item" tabindex="10" id="option-3" role="option" aria-label="Trier par Titre">
+                    Ingredients 3
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="dropdown appareil">
+              <li id="selected">
+                <button aria-haspopup="true" tabindex="10" aria-label="Trier les images">Appareils</button>
+              </li>
+              <li aria-expanded="false" class="list-container">
+                <ul class="list" role="listbox">
+                  <li class="list-item activePop" tabindex="10" id="option-1" role="option" aria-label="Trier par popularité">
+                    Appareils 1
+                  </li>
+                  <li class="list-item" tabindex="10" id="option-2" role="option" aria-label="Trier par Date">
+                    Appareils 2
+                  </li>
+                  <li class="list-item" tabindex="10" id="option-3" role="option" aria-label="Trier par Titre">
+                    Appareils 3
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="dropdown ustensiles">
+              <li id="selected">
+                <button aria-haspopup="true" tabindex="10" aria-label="Trier les images">Ustensiles</button>
+              </li>
+              <li aria-expanded="false" class="list-container">
+                <ul class="list" role="listbox">
+                  <li class="list-item activePop" tabindex="10" id="option-1" role="option" aria-label="Trier par popularité">
+                    Ustensiles 1
+                  </li>
+                  <li class="list-item" tabindex="10" id="option-2" role="option" aria-label="Trier par Date">
+                    Ustensiles 2
+                  </li>
+                  <li class="list-item" tabindex="10" id="option-3" role="option" aria-label="Trier par Titre">
+                    Ustensiles 3
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section id="recipes">
+            <!-- <article>
+              <figure>
+                <img src="public/images/recipes/limonade-de-coco.jpg" alt="limonade-de-coco" />
+              </figure>
+              <h2>Limonade de coco</h2>
+              <p class="times"><i class="far fa-clock"></i> 10 min</p>
+              <ul>
+                <li>Lait de coco: 400ml</li>
+                <li>Jus de citron: 2</li>
+                  <li>Créme de coco: 4 cuillères</li>
+                  <li>Sucre: 20g</li>
+                  <li>Glaçons: 2</li>
+              </ul>
+              <p class="recipe">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</p>
+            </article>
+            <article>
+              <figure>
+                <img src="public/images/recipes/limonade-de-coco.jpg" alt="limonade-de-coco" />
+              </figure>
+              <h2>Limonade de coco</h2>
+              <p class="times"><i class="far fa-clock"></i> 10 min</p>
+              <ul>
+                <li>Lait de coco: 400ml</li>
+                <li>Jus de citron: 2</li>
+                  <li>Créme de coco: 4 cuillères</li>
+                  <li>Sucre: 20g</li>
+                  <li>Glaçons: 2</li>
+              </ul>
+              <p class="recipe">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</p>
+            </article>
+            <article>
+              <figure>
+                <img src="public/images/recipes/limonade-de-coco.jpg" alt="limonade-de-coco" />
+              </figure>
+              <h2>Limonade de coco</h2>
+              <p class="times"><i class="far fa-clock"></i> 10 min</p>
+              <ul>
+                <li>Lait de coco: 400ml</li>
+                <li>Jus de citron: 2</li>
+                  <li>Créme de coco: 4 cuillères</li>
+                  <li>Sucre: 20g</li>
+                  <li>Glaçons: 2</li>
+              </ul>
+              <p class="recipe">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée</p>
+            </article> -->
+          </section>
+        </main>
         <footer></footer>
+        <!--Javascript-->
+        <script type="module" src="public/js/index.js"></script>
     </body>
 </html>
 
