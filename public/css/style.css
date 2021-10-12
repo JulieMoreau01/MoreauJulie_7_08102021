@@ -8,6 +8,9 @@ html {
   font-size: 100%;
   font-weight: 400;
   line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 html body {
   position: relative;
@@ -245,7 +248,6 @@ header figure img {
 #recipes article {
   background-color: #E7E7E7;
   border-radius: 5px;
-  display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -260,8 +262,7 @@ header figure img {
 }
 @media screen and (min-width: 1024px) {
   #recipes article {
-    width: 30%;
-    margin-right: 5%;
+    width: 28%;
   }
 }
 #recipes article figure {
@@ -332,8 +333,16 @@ header figure img {
     height: 109px;
   }
 }
-#recipes article:nth-child(3n+0) {
-  margin-right: 0 !important;
+#recipes .show {
+  margin-right: 5%;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: flex;
 }
 
 /*# sourceMappingURL=style.css.map */

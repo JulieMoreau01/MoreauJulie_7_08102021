@@ -37,7 +37,7 @@ export class Recipes {
   // Template HTML
   creatHtmlRecipe () {
     return `
-    <article>
+    <article class="show">
       <figure><img src="public/images/recipes/limonade-de-coco.jpg" alt="limonade-de-coco" /></figure>
       <h2>${this.name}</h2>
       <p class="times"><i class="far fa-clock"></i> ${this.time} min</p>
