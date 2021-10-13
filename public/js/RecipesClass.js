@@ -1,5 +1,6 @@
 export class Recipes {
   constructor (item) {
+    this.id = item.id
     this.name = item.name
     this.time = item.time
     this.description = item.description
@@ -12,8 +13,6 @@ export class Recipes {
       const unit = elt.unit
       if ((quantity === undefined) && (unit === undefined)) {
         return `<li><span>${ingredient}</span></li>`
-      } else if (quantity === undefined) {
-        return `<li><span>${ingredient} :</span> ${unit}</li>`
       } else if (unit === undefined) {
         return `<li><span>${ingredient} :</span> ${quantity}</li>`
       } else {
@@ -37,7 +36,7 @@ export class Recipes {
   // Template HTML
   creatHtmlRecipe () {
     return `
-    <article class="show">
+    <article id="${this.id}">
       <figure><img src="public/images/recipes/limonade-de-coco.jpg" alt="limonade-de-coco" /></figure>
       <h2>${this.name}</h2>
       <p class="times"><i class="far fa-clock"></i> ${this.time} min</p>

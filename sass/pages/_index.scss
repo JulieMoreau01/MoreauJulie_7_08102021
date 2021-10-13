@@ -47,18 +47,14 @@
       }
     }
   }
-  ul.ingredient {
-    li {
+  ul {
+    li.ingredients {
       background-color: $color-filtre-one;
     }
-  }
-  ul.appareil {
-    li {
+    li.appareil {
       background-color: $color-filtre-two;
     }
-  }
-  ul.ustensiles {
-    li {
+    li.ustensiles {
       background-color: $color-filtre-three;
     }
   }
@@ -66,20 +62,22 @@
 
 #filter {
   display: flex;
+  flex-wrap: wrap;
   ul.dropdown {
     z-index: 10;
+    display: block;
     @include media(phone) {
-      display: none;
+      width: 100%;
+      margin: 0 0px 20px 0px;
     }
     @include media(desktop) {
-      display: block;
+      width: max-content;
+      margin: 0 20px 0 0px;
     }
     list-style: none;
     position: relative;
-    width: 180px;
     height: 69px;
     cursor: pointer;
-    margin: 0 20px 0 0px;
     padding: 0 0 0;
     border-radius: 5px;
     li.label {
@@ -101,8 +99,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      button {
-        width: 100%;
+      border-radius: 5px;
+      input {
+        width: 223px;
         height: 100%;
         background-color: transparent;
         @include font-size(18);
@@ -113,8 +112,9 @@
         text-align: left;
         cursor: pointer;
         border: 0;
+        transition: transform .2s linear;
         &:focus {
-          border: 2px solid black;
+          width: 50vh;
         }
       }
     }
@@ -122,36 +122,21 @@
       position: relative;
       ul.list {
         li.list-item {
-          padding:15px 0px 15px 15px;
+          padding:5px 0px 5px 15px;
           transition: background-color .1s linear, color .1s linear;
           color: white;
           list-style-position: inside;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          font-weight: 700;
+          font-weight: 400;
           position: relative;
           @include font-size(18);
-            // White Ligne
-            &::after {
-              content: "";
-              position: absolute;
-              bottom: 0px;
-              right: 5%;
-              background-color: white; 
-              height: 1px;
-              width: 90%;
-            }
+
             &:hover, &:focus {
               background-color: $color-filtre-one;
               color: black;
-              border: 2px solid black;
            }
-        }
-        li.list-item:last-child {
-          &::after {
-            display: none;
-          }
         }
       }
     }
@@ -167,9 +152,11 @@
       font-family: 'FontAwesome';
     }
   }
-  ul.dropdown.appareil {background: $color-filtre-two;}
-  ul.dropdown.ustensiles {background: $color-filtre-three;}
-  ul.dropdown.ingredient {background: $color-filtre-one;}
+
+  ul.dropdown.appareil, ul.dropdown.appareil ul.list {background: $color-filtre-two;}
+  ul.dropdown.ustensiles, ul.dropdown.ustensiles ul.list {background: $color-filtre-three;}
+  ul.dropdown.ingredients, ul.dropdown.ingredients ul.list  {background: $color-filtre-one;}
+
   ul.dropdown.arrowOpen::before {
     transform: rotate(-180deg);
   }
@@ -179,7 +166,7 @@
     position: absolute;
     z-index: 10;
     left: 0;
-    top: -57px;
+    top: 0px;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     transition: opacity .1s cubic-bezier(0, 0, 0.38, 0.9), max-height .5s cubic-bezier(0, 0, 0.38, 0.9);
@@ -189,14 +176,17 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    background-color: $color-filtre-one;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
   
   ul.open {
     opacity: 1;
     overflow: auto;
-    max-height: 15rem;
+    max-height: 300px;
+    width: 50vh;
   }
 }
 
@@ -211,11 +201,13 @@
       margin-right: 0px;
     }
     @include media(desktop) {
-      width: 28%;
+      width: 30%;
+      margin-right: 5%;
     }
     background-color: $grey-light;
     border-radius: 5px;
     align-items: flex-start;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: flex-start;
@@ -282,10 +274,7 @@
       }
     }
   }
-  .show {
-    margin-right: 5%;
+  article:nth-child(3n) {
+    margin-right: 0px;
   }
-  // .show:nth-child(3n) {
-  //   margin-right: 0;
-  // }
 }

@@ -59,7 +59,7 @@ export const recipes = [
         quantity: 5
       },
       {
-        ingredient: 'Lait de Coco',
+        ingredient: 'Lait de coco',
         quantity: 100,
         unit: 'ml'
       }
@@ -165,7 +165,7 @@ export const recipes = [
         unit: 'cuillères à soupe'
       },
       {
-        ingredient: 'gruyère râpé',
+        ingredient: 'Gruyère râpé',
         quantity: 100,
         unit: 'grammes'
       },
@@ -281,7 +281,7 @@ export const recipes = [
         unit: 'grammes'
       },
       {
-        ingredient: 'farine',
+        ingredient: 'Farine',
         quantity: 90,
         unit: 'grammes'
       }

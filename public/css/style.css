@@ -90,38 +90,40 @@ header figure img {
   margin-left: 13px;
   font-size: 1.25rem;
 }
-#tag ul.ingredient li {
+#tag ul li.ingredients {
   background-color: #3282F7;
 }
-#tag ul.appareil li {
+#tag ul li.appareil {
   background-color: #68D9A4;
 }
-#tag ul.ustensiles li {
+#tag ul li.ustensiles {
   background-color: #ED6454;
 }
 
 #filter {
   display: flex;
+  flex-wrap: wrap;
 }
 #filter ul.dropdown {
   z-index: 10;
+  display: block;
   list-style: none;
   position: relative;
-  width: 180px;
   height: 69px;
   cursor: pointer;
-  margin: 0 20px 0 0px;
   padding: 0 0 0;
   border-radius: 5px;
 }
 @media screen and (min-width: 0px) {
   #filter ul.dropdown {
-    display: none;
+    width: 100%;
+    margin: 0 0px 20px 0px;
   }
 }
 @media screen and (min-width: 1024px) {
   #filter ul.dropdown {
-    display: block;
+    width: max-content;
+    margin: 0 20px 0 0px;
   }
 }
 #filter ul.dropdown li.label {
@@ -143,9 +145,10 @@ header figure img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-radius: 5px;
 }
-#filter ul.dropdown li#selected button {
-  width: 100%;
+#filter ul.dropdown li#selected input {
+  width: 223px;
   height: 100%;
   background-color: transparent;
   font-size: 1.125rem;
@@ -156,41 +159,29 @@ header figure img {
   text-align: left;
   cursor: pointer;
   border: 0;
+  transition: transform 0.2s linear;
 }
-#filter ul.dropdown li#selected button:focus {
-  border: 2px solid black;
+#filter ul.dropdown li#selected input:focus {
+  width: 50vh;
 }
 #filter ul.dropdown li.list-container {
   position: relative;
 }
 #filter ul.dropdown li.list-container ul.list li.list-item {
-  padding: 15px 0px 15px 15px;
+  padding: 5px 0px 5px 15px;
   transition: background-color 0.1s linear, color 0.1s linear;
   color: white;
   list-style-position: inside;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: 700;
+  font-weight: 400;
   position: relative;
   font-size: 1.125rem;
-}
-#filter ul.dropdown li.list-container ul.list li.list-item::after {
-  content: "";
-  position: absolute;
-  bottom: 0px;
-  right: 5%;
-  background-color: white;
-  height: 1px;
-  width: 90%;
 }
 #filter ul.dropdown li.list-container ul.list li.list-item:hover, #filter ul.dropdown li.list-container ul.list li.list-item:focus {
   background-color: #3282F7;
   color: black;
-  border: 2px solid black;
-}
-#filter ul.dropdown li.list-container ul.list li.list-item:last-child::after {
-  display: none;
 }
 #filter ul.dropdown::before {
   content: "";
@@ -203,13 +194,13 @@ header figure img {
   font-weight: 900;
   font-family: "FontAwesome";
 }
-#filter ul.dropdown.appareil {
+#filter ul.dropdown.appareil, #filter ul.dropdown.appareil ul.list {
   background: #68D9A4;
 }
-#filter ul.dropdown.ustensiles {
+#filter ul.dropdown.ustensiles, #filter ul.dropdown.ustensiles ul.list {
   background: #ED6454;
 }
-#filter ul.dropdown.ingredient {
+#filter ul.dropdown.ingredients, #filter ul.dropdown.ingredients ul.list {
   background: #3282F7;
 }
 #filter ul.dropdown.arrowOpen::before {
@@ -220,7 +211,7 @@ header figure img {
   position: absolute;
   z-index: 10;
   left: 0;
-  top: -57px;
+  top: 0px;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   transition: opacity 0.1s cubic-bezier(0, 0, 0.38, 0.9), max-height 0.5s cubic-bezier(0, 0, 0.38, 0.9);
@@ -230,13 +221,16 @@ header figure img {
   list-style: none;
   margin: 0;
   padding: 0;
-  background-color: #3282F7;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 #filter ul.open {
   opacity: 1;
   overflow: auto;
-  max-height: 15rem;
+  max-height: 300px;
+  width: 50vh;
 }
 
 #recipes {
@@ -249,6 +243,7 @@ header figure img {
   background-color: #E7E7E7;
   border-radius: 5px;
   align-items: flex-start;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: flex-start;
@@ -262,7 +257,8 @@ header figure img {
 }
 @media screen and (min-width: 1024px) {
   #recipes article {
-    width: 28%;
+    width: 30%;
+    margin-right: 5%;
   }
 }
 #recipes article figure {
@@ -333,8 +329,8 @@ header figure img {
     height: 109px;
   }
 }
-#recipes .show {
-  margin-right: 5%;
+#recipes article:nth-child(3n) {
+  margin-right: 0px;
 }
 
 .hidden {
