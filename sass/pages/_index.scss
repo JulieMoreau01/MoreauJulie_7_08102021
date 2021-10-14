@@ -14,12 +14,15 @@
       color: rgb(0, 0, 0, 0.25)
     }
   }
-  p {
+  p.picto {
     position: absolute;
     right: 22px;
     top: 11px;
     margin: 0;
     @include font-size(32)
+  }
+  p#no_result {
+    color: orange;
   }
 }
 
@@ -108,7 +111,7 @@
         font-weight: 700;
         padding: 0px 15px;
         color: white;
-        border-radius: 5px;
+        border-radius: 5px 5px 0px 0px;
         text-align: left;
         cursor: pointer;
         border: 0;
@@ -132,11 +135,10 @@
           font-weight: 400;
           position: relative;
           @include font-size(18);
-
-            &:hover, &:focus {
-              background-color: $color-filtre-one;
-              color: black;
-           }
+          text-transform: capitalize;
+          &:hover {
+            background: rgb(000, 000, 000, 0.5);
+          }
         }
       }
     }
@@ -152,10 +154,22 @@
       font-family: 'FontAwesome';
     }
   }
+  ul.dropdown.arrowOpen {
+    border-radius : 5px 5px 0px 0px !important;
+  }
 
-  ul.dropdown.appareil, ul.dropdown.appareil ul.list {background: $color-filtre-two;}
-  ul.dropdown.ustensiles, ul.dropdown.ustensiles ul.list {background: $color-filtre-three;}
-  ul.dropdown.ingredients, ul.dropdown.ingredients ul.list  {background: $color-filtre-one;}
+  ul.dropdown.appareil, 
+  ul.dropdown.appareil ul.list {
+    background: $color-filtre-two;
+  }
+  ul.dropdown.ustensiles, 
+  ul.dropdown.ustensiles ul.list {
+    background: $color-filtre-three;
+  }
+  ul.dropdown.ingredients, 
+  ul.dropdown.ingredients ul.list  {
+    background: $color-filtre-one;
+  }
 
   ul.dropdown.arrowOpen::before {
     transform: rotate(-180deg);
@@ -176,7 +190,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    border-radius: 5px;
+    border-radius: 0px 0px 5px 5px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

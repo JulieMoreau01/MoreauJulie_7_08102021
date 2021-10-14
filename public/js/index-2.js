@@ -1,12 +1,13 @@
 import { recipes } from './recipes.js'
 import { Recipes } from './RecipesClass.js'
-import { displayDropdown, dropdownSort, arrayTag } from './dropdown.js'
+import { displayDropdown, dropdownSort } from './dropdown.js'
 import { newRecipes, newIngredients } from './stringRecipes.js'
 
 const sectionRecipes = document.getElementById('recipes')
 const noResult = document.getElementById('no_result')
 const input = document.querySelector('input')
 
+// Template OF CLASS RecipesClass
 function templateRecipes (count) {
   const item = recipes[count]
   const recipesTemplate = new Recipes(item)
@@ -14,20 +15,19 @@ function templateRecipes (count) {
 }
 
 // DISPLAY RECIPES AFTER EVENT ON INPUT
-function displaySearchRecipes (theValue) {
-  let count = -1
-  newRecipes.forEach(item => {
-    count++
-    item += newIngredients[count]
-    if (item.includes(theValue) === true) {
+function displaySearchRecipes (inputValue) {
+  for (let i = 0; i < recipes.length; i++) {
+    newRecipes[i] += newIngredients[i]
+    const item = newRecipes[i]
+    if (item.includes(inputValue) === true) {
       noResult.innerHTML = ''
-      templateRecipes(count)
+      templateRecipes(i)
     } else {
       if (sectionRecipes.innerHTML === '') {
         noResult.innerHTML = '<i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère'
       }
     }
-  })
+  }
 }
 
 // GET INPUT VALUE
@@ -42,17 +42,6 @@ function getInputValue () {
       displaySearchRecipes(inputValue)
     }
   })
-}
-
-// const tagValue = 'roblochon'
-
-// GET TAG VALUE
-export function getTagValue (arrayTag) {
-  console.log(arrayTag)
-  noResult.innerHTML = ''
-  if (arrayTag !== '') {
-    displaySearchRecipes(arrayTag)
-  }
 }
 
 const init = async () => {

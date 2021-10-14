@@ -1,7 +1,6 @@
 import { recipes } from './recipes.js'
 import { Dropdown } from './DropdownClass.js'
-
-const listItemIds = []
+import { getTagValue } from './index.js'
 
 const sectionFilter = document.getElementById('filter')
 
@@ -41,8 +40,6 @@ function getUstensiles () {
   return uniqueUstensils
 }
 
-getUstensiles()
-
 // LISTE APPAREIL
 function getAppareils () {
   const appareilsArray = []
@@ -53,8 +50,6 @@ function getAppareils () {
   const uniqueAppareils = [...new Set(appareilsArray)]
   return uniqueAppareils
 }
-
-getAppareils()
 
 // LISTE INGREDIENTS
 function getIngredients () {
@@ -69,14 +64,16 @@ function getIngredients () {
   return uniqueIngredients
 }
 
-getIngredients()
-
+export let arrayTag = []
+const tag = []
 // DISPLAY SELECTION ON SECTION TAG
 function setSelectedListItem (event, name) {
   const selectedTextToAppend = document.createTextNode(event.target.innerText)
-
+  const tagValue = selectedTextToAppend.data
+  tag.push(tagValue)
+  arrayTag = tag.toString().toLowerCase()
+  getTagValue(arrayTag)
   const tagUl = document.querySelector('#tag ul')
-
   const newLi = document.createElement('li')
   tagUl.appendChild(newLi)
   newLi.classList.add(name)
@@ -98,27 +95,6 @@ function closeList (item) {
   list.classList.remove('open')
   dropdown.classList.remove('arrowOpen')
 }
-
-// // FOCUS ON NEXT ELEMENT WITH ARROW
-// function focusNextListItem (direction) {
-//   const activeElementId = document.activeElement.id
-//   const currentActiveElementIndex = listItemIds.indexOf(activeElementId)
-//   if (direction === 'ArrowDown') {
-//     const currentActiveElementIsNotLastItem =
-//       currentActiveElementIndex < listItemIds.length - 1
-//     if (currentActiveElementIsNotLastItem) {
-//       const nextListItemId = listItemIds[currentActiveElementIndex + 1]
-//       document.querySelector(`#${nextListItemId}`).focus()
-//     }
-//   } else if (direction === 'ArrowUp') {
-//     const currentActiveElementIsNotFirstItem =
-//     currentActiveElementIndex > 0
-//     if (currentActiveElementIsNotFirstItem) {
-//       const nextListItemId = listItemIds[currentActiveElementIndex - 1]
-//       document.querySelector(`#${nextListItemId}`).focus()
-//     }
-//   }
-// }
 
 // OPEN DROPDOWN AND NEXT ACTION
 function toggleListVisibility (item) {
@@ -142,14 +118,6 @@ function toggleListVisibility (item) {
     if (event.key === 'Escape') {
       closeList(item)
     }
-    // Go Down
-    if (event.key === 'ArrowDown') {
-      focusNextListItem('ArrowDown')
-    }
-    // Go Up
-    if (event.key === 'ArrowUp') {
-      focusNextListItem('ArrowUp')
-    }
   })
 }
 
@@ -168,6 +136,7 @@ export function dropdownSort () {
   })
 
   // EVENT ON LIST ITEM
+  const listItemIds = []
   listItems.forEach(item => listItemIds.push(item.id))
 
   listItems.forEach(item => {
@@ -190,15 +159,6 @@ export function dropdownSort () {
           setSelectedListItem(event)
           closeList(item)
           return
-
-        case 'ArrowDown':
-          focusNextListItem('ArrowDown')
-          return
-
-        case 'ArrowUp':
-          focusNextListItem('ArrowUp')
-          return
-
         case 'Escape':
           closeList(item)
       }

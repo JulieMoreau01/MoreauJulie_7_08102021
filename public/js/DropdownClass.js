@@ -1,7 +1,6 @@
 export class Dropdown {
   constructor (item) {
     this.name = item.name
-    // this.list = item.list
     const theList = item.list
     const listLi = theList.map((elt) => {
       return `<li class="list-item activePop ${this.name}" id="option-1" role="option">${elt}</li>`

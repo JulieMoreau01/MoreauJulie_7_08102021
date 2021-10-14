@@ -59,12 +59,15 @@ header figure img {
   font-size: 1.125rem;
   color: rgba(0, 0, 0, 0.25);
 }
-#search p {
+#search p.picto {
   position: absolute;
   right: 22px;
   top: 11px;
   margin: 0;
   font-size: 2rem;
+}
+#search p#no_result {
+  color: orange;
 }
 
 #tag ul {
@@ -155,7 +158,7 @@ header figure img {
   font-weight: 700;
   padding: 0px 15px;
   color: white;
-  border-radius: 5px;
+  border-radius: 5px 5px 0px 0px;
   text-align: left;
   cursor: pointer;
   border: 0;
@@ -178,10 +181,10 @@ header figure img {
   font-weight: 400;
   position: relative;
   font-size: 1.125rem;
+  text-transform: capitalize;
 }
-#filter ul.dropdown li.list-container ul.list li.list-item:hover, #filter ul.dropdown li.list-container ul.list li.list-item:focus {
-  background-color: #3282F7;
-  color: black;
+#filter ul.dropdown li.list-container ul.list li.list-item:hover {
+  background: rgba(0, 0, 0, 0.5);
 }
 #filter ul.dropdown::before {
   content: "";
@@ -194,13 +197,19 @@ header figure img {
   font-weight: 900;
   font-family: "FontAwesome";
 }
-#filter ul.dropdown.appareil, #filter ul.dropdown.appareil ul.list {
+#filter ul.dropdown.arrowOpen {
+  border-radius: 5px 5px 0px 0px !important;
+}
+#filter ul.dropdown.appareil,
+#filter ul.dropdown.appareil ul.list {
   background: #68D9A4;
 }
-#filter ul.dropdown.ustensiles, #filter ul.dropdown.ustensiles ul.list {
+#filter ul.dropdown.ustensiles,
+#filter ul.dropdown.ustensiles ul.list {
   background: #ED6454;
 }
-#filter ul.dropdown.ingredients, #filter ul.dropdown.ingredients ul.list {
+#filter ul.dropdown.ingredients,
+#filter ul.dropdown.ingredients ul.list {
   background: #3282F7;
 }
 #filter ul.dropdown.arrowOpen::before {
@@ -221,7 +230,7 @@ header figure img {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-radius: 5px;
+  border-radius: 0px 0px 5px 5px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

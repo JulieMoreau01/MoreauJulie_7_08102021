@@ -43,7 +43,7 @@ export const recipes = [
         unit: 'grammes'
       },
       {
-        ingredient: 'Concombre',
+        ingredient: 'Concombre chouchounet',
         quantity: 1
       },
       {
