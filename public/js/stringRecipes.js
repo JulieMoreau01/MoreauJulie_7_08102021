@@ -1,30 +1,24 @@
 import { recipes } from './recipes.js'
 
 /**
- * Convert RECIPES ARRAY IN STRING
+ * Convert RECIPES IN STRING IN A NEW ARRAY
  */
 export const newRecipes = []
+
 recipes.forEach(item => {
   const newArray = Object.values(item)
-  newArray.splice(2, 3)
-  const newArrayString = newArray.toString().toLowerCase()
-  newRecipes.push(newArrayString)
+  newRecipes.push(newArray)
 })
 
-/**
- * Convert RECIPES INGREDIENTS ARRAY IN STRING
- */
-export const newIngredients = []
-let newArrayStringIng
+let ingredient
 
-recipes.forEach(item => {
-  let name = item.id
-  name = []
-  const ingredients = item.ingredients
-  ingredients.forEach(item => {
-    const ingredient = item.ingredient
-    name.push(ingredient)
-    newArrayStringIng = name.toString().toLowerCase()
+newRecipes.forEach(recipe => {
+  let nameId = recipe[0]
+  nameId = []
+  recipe[3].forEach(item => {
+    ingredient = Object.values(item)
+    ingredient.splice(1, 2)
+    nameId.push(ingredient)
   })
-  newIngredients.push(newArrayStringIng)
+  recipe[3] = nameId
 })
