@@ -11,7 +11,7 @@
     display: block;
     &:placeholder-shown {
       @include font-size(18);
-      color: rgb(0, 0, 0, 0.25)
+      color: rgb(0, 0, 0, 0.25);
     }
   }
   p.picto {
@@ -118,6 +118,11 @@
         transition: transform .2s linear;
         &:focus {
           width: 50vh;
+        }
+        &::placeholder {
+          text-transform: capitalize;
+          color: white;
+          opacity: 1;
         }
       }
     }

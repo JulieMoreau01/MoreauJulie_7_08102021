@@ -1,5 +1,5 @@
 import { recipesAfterSearch } from './index.js'
-import { newRecipes } from './StringRecipes.js'
+import { cleanRecipes } from './cleanRecipes.js'
 import { Dropdown } from './DropdownClass.js'
 
 export let uniqueUstensils
@@ -11,7 +11,7 @@ export function displayDropdown () {
 
   let arrayUpdate
   if (recipesAfterSearch.length === 0) {
-    arrayUpdate = newRecipes
+    arrayUpdate = cleanRecipes
   } else {
     arrayUpdate = recipesAfterSearch
   }

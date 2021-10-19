@@ -13,7 +13,7 @@ export class Dropdown {
     return `
     <ul class="dropdown ${this.name}">
     <li id="selected">
-      <input aria-haspopup="true" aria-label="Trier par ${this.name}" value="${this.name}" placeholder="Rechercher un ${this.name}" class="${this.name}" />
+      <input aria-haspopup="true" aria-label="Trier par ${this.name}" placeholder="${this.name}" class="${this.name}" />
     </li>
     <li aria-expanded="false" class="list-container ${this.name}">
       <ul class="list" role="listbox" id="${this.name}">

@@ -1,11 +1,8 @@
-// import { recipes } from './recipes.js'
-// import { Dropdown } from './DropdownClass.js'
-// import { getTagValue } from './index.js'
-// import { displayDropdown } from './displayDropdown.js'
 import { displayDropdown, uniqueUstensils, uniqueAppareils, uniqueIngredients } from './displayDropdown.js'
 import { setSelectedListItem } from './creatTag.js'
 
 function sortList (item, inputValue) {
+  let list
   if (item.classList.contains('ustensiles') === true) {
     const list = uniqueUstensils
     console.log(list)
@@ -13,14 +10,15 @@ function sortList (item, inputValue) {
     const list = uniqueAppareils
     console.log(list)
   } else if (item.classList.contains('ingredients') === true) {
-    const list = uniqueIngredients
+    list = uniqueIngredients
+    console.log(list)
     list.forEach(item => {
       console.log(item)
       const itemGood = item.toString().toLowerCase()
       if (itemGood.includes(inputValue) === true) {
         console.log('ok')
       } else {
-        item.splice(item, 1)
+        console.log('pas ok')
       }
     })
   }
@@ -51,12 +49,8 @@ export function dropdownEvent () {
       openDropDownMenu(item)
     })
     item.addEventListener('keyup', () => {
-      if (item.value.length < 3) {
-        console.log('la')
-      } else if (item.value.length > 2) {
-        const inputValue = item.value.toLowerCase()
-        sortList(item, inputValue)
-      }
+      const inputValue = item.value.toLowerCase()
+      sortList(item, inputValue)
     })
   })
 
@@ -73,26 +67,18 @@ export function dropdownEvent () {
     item.addEventListener('click', event => {
       if (item.classList.contains('ustensiles') === true) {
         const name = 'ustensiles'
-        console.log('ustensiles')
         setSelectedListItem(event, name)
+        closeList(item)
       } else if (item.classList.contains('appareil') === true) {
         const name = 'appareil'
         setSelectedListItem(event, name)
+        closeList(item)
       } else if (item.classList.contains('ingredients') === true) {
         const name = 'ingredients'
         setSelectedListItem(event, name)
+        closeList(item)
       }
       closeList(item)
-    })
-    item.addEventListener('keydown', event => {
-      switch (event.key) {
-        case 'Enter':
-          setSelectedListItem(event)
-          closeList(item)
-          return
-        case 'Escape':
-          closeList(item)
-      }
     })
   })
 }

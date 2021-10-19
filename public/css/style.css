@@ -167,6 +167,11 @@ header figure img {
 #filter ul.dropdown li#selected input:focus {
   width: 50vh;
 }
+#filter ul.dropdown li#selected input::placeholder {
+  text-transform: capitalize;
+  color: white;
+  opacity: 1;
+}
 #filter ul.dropdown li.list-container {
   position: relative;
 }

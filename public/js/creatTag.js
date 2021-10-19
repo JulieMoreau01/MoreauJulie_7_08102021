@@ -1,6 +1,5 @@
-import { displaySearchRecipesTag } from './index.js'
+import { displaySearchRecipesTag, removeRecipeFromArray } from './index.js'
 
-export const tagValue = []
 // DISPLAY SELECTION ON SECTION TAG
 export function setSelectedListItem (event, name) {
   const selectedTextToAppend = document.createTextNode(event.target.innerText)
@@ -14,8 +13,7 @@ export function setSelectedListItem (event, name) {
   newLi.innerHTML += '<i class="far fa-times-circle"></i>'
 
   // Add tag in array tagValue
-  const value = selectedTextToAppend.data.toLowerCase()
-  tagValue.push(value)
+  const tagValue = selectedTextToAppend.data.toLowerCase()
   displaySearchRecipesTag(tagValue)
 
   // Remove Tag
@@ -25,11 +23,8 @@ export function setSelectedListItem (event, name) {
       const parent = item.parentElement
       parent.remove()
       const value = parent.firstChild.data
-      for (let i = 0; i < tagValue.length; i++) {
-        if (tagValue[i] === value) {
-          tagValue.splice(i, 1)
-        }
-      }
+      const removeValue = value.toString().toLowerCase()
+      removeRecipeFromArray(removeValue)
     })
   })
 }

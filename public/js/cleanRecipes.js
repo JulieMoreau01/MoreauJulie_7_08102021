@@ -1,18 +1,18 @@
 import { recipes } from './recipes.js'
 
 /**
- * Convert RECIPES IN STRING IN A NEW ARRAY
+ * REMOVE OBJECT FROM RECIPES.JS
  */
-export const newRecipes = []
+export const cleanRecipes = []
 
 recipes.forEach(item => {
   const newArray = Object.values(item)
-  newRecipes.push(newArray)
+  cleanRecipes.push(newArray)
 })
 
 let ingredient
 
-newRecipes.forEach(recipe => {
+cleanRecipes.forEach(recipe => {
   let nameId = recipe[0]
   nameId = []
   recipe[3].forEach(item => {
