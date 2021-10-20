@@ -186,7 +186,9 @@ header figure img {
   font-weight: 400;
   position: relative;
   font-size: 1.125rem;
-  text-transform: capitalize;
+}
+#filter ul.dropdown li.list-container ul.list li.list-item::first-letter {
+  text-transform: uppercase;
 }
 #filter ul.dropdown li.list-container ul.list li.list-item:hover {
   background: rgba(0, 0, 0, 0.5);

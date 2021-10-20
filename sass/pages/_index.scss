@@ -140,7 +140,9 @@
           font-weight: 400;
           position: relative;
           @include font-size(18);
-          text-transform: capitalize;
+          &::first-letter {
+            text-transform: uppercase; 
+          }
           &:hover {
             background: rgb(000, 000, 000, 0.5);
           }

@@ -1,76 +1,30 @@
 import { recipes } from './recipes.js'
 import { Recipes } from './RecipesClass.js'
-import { dropdownEvent } from './dropdownEvent.js'
-import { cleanRecipes } from './cleanRecipes.js'
-import { displayDropdown } from './displayDropdown.js'
+import { openDropDownMenu, closeList, sortList } from './dropdownEvent.js'
+import { displaySearchRecipesInput } from './displayRecipes.js'
+import { displayDropdown, displayList } from './displayDropdown.js'
+import { updateListeTag } from './listGeneration.js'
+import { creatTag } from './creatTag.js'
 
 const sectionRecipes = document.getElementById('recipes')
 const noResult = document.getElementById('no_result')
 const input = document.querySelector('input')
+export let arrayUpdate
+export let recipesAfterSearch
+let newList = []
 
-function templateRecipes (idRecipe) {
-  idRecipe = recipes[idRecipe]
-  const recipesTemplate = new Recipes(idRecipe)
-  sectionRecipes.innerHTML += recipesTemplate.creatHtmlRecipe()
-}
-
-function creatRecipesAfterSearch (recipe) {
-  recipesAfterSearch.push(recipe)
-  recipesAfterSearch.splice(0, recipesAfterSearch.length, ...(new Set(recipesAfterSearch)))
-  console.log(recipesAfterSearch)
-  displayDropdown()
-  dropdownEvent()
-  const idRecipe = recipe[0] - 1
-  templateRecipes(idRecipe)
-}
-
-export let recipesAfterSearch = []
-
-// DISPLAY RECIPES AFTER EVENT ON INPUT
-export function displaySearchRecipesInput (theValue) {
-  cleanRecipes.forEach(recipe => {
-    const nameRecipe = recipe[1].toString().toLowerCase()
-    const descriptionRecipe = recipe[5].toString().toLowerCase()
-    const ingredients = recipe[3].toString().toLowerCase()
-    if ((nameRecipe.includes(theValue) === true) ||
-    (descriptionRecipe.includes(theValue) === true) ||
-    (ingredients.includes(theValue) === true)) {
-      noResult.innerHTML = ''
-      creatRecipesAfterSearch(recipe)
-    } else {
-      if (sectionRecipes.innerHTML === '') {
-        noResult.innerHTML = '<i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère'
-      }
-    }
+// Display all the recipes at first
+function displayAllRecipes () {
+  recipes.forEach(item => {
+    const recipesTemplate = new Recipes(item)
+    sectionRecipes.innerHTML += recipesTemplate.creatHtmlRecipe()
   })
-}
-
-// DISPLAY RECIPES AFTER EVENT ON TAG
-export function displaySearchRecipesTag (tagValue) {
-  let arrayUpdate
-  if (recipesAfterSearch.length === 0) {
-    arrayUpdate = cleanRecipes
-  } else {
-    arrayUpdate = recipesAfterSearch
-  }
   recipesAfterSearch = []
-  sectionRecipes.innerHTML = ''
-  console.log('lalala')
-  arrayUpdate.forEach(recipe => {
-    const nameRecipe = recipe[1].toString().toLowerCase()
-    const descriptionRecipe = recipe[5].toString().toLowerCase()
-    const ingredients = recipe[3].toString().toLowerCase()
-    if ((nameRecipe.includes(tagValue) === true) ||
-    (descriptionRecipe.includes(tagValue) === true) ||
-    (ingredients.includes(tagValue) === true)) {
-      noResult.innerHTML = ''
-      creatRecipesAfterSearch(recipe)
-    } else {
-      if (sectionRecipes.innerHTML === '') {
-        noResult.innerHTML = '<i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère'
-      }
-    }
-  })
+  newList = []
+  const name = 'noName'
+  updateListeTag(recipesAfterSearch, newList, name)
+  displayDropdown()
+  displayList()
 }
 
 // GET INPUT VALUE
@@ -89,28 +43,48 @@ function getInputValue () {
   })
 }
 
-export function removeRecipeFromArray (removeValue) {
-  const tag = document.querySelector('section#tag ul li')
-  console.log(tag)
-  if (tag === null) {
-    sectionRecipes.innerHTML = ''
-    const inputValue = input.value.toLowerCase()
-    displaySearchRecipesInput(inputValue)
-  } else {
-    sectionRecipes.innerHTML = ''
-    const tagValue = tag.textContent.toLowerCase()
-    console.log(tagValue)
-    const inputValue = input.value.toLowerCase()
-    displaySearchRecipesInput(inputValue)
-    displaySearchRecipesTag(tagValue)
-  }
+export function eventDropDownInput () {
+  // EVENT ON DROPDOWN INPUT
+  const dropdownInput = document.querySelectorAll('#selected input')
+  dropdownInput.forEach(item => {
+    item.addEventListener('click', () => {
+      openDropDownMenu(item)
+      item.addEventListener('keyup', () => {
+        console.log('keyup')
+        const inputValue = item.value.toString().toLowerCase()
+        sortList(item, inputValue)
+      })
+    })
+  })
 }
 
+export function eventDropDownList () {
+  // EVENT ON DROPDOWN LIST
+  const listItems = document.querySelectorAll('.list-item')
+  listItems.forEach(item => {
+    item.addEventListener('click', event => {
+      if (item.classList.contains('ustensiles') === true) {
+        const name = 'ustensiles'
+        creatTag(event, name)
+        closeList('ustensiles')
+      } else if (item.classList.contains('appareil') === true) {
+        const name = 'appareil'
+        creatTag(event, name)
+        closeList('appareil')
+      } else if (item.classList.contains('ingredients') === true) {
+        const name = 'ingredients'
+        creatTag(event, name)
+        closeList('ingredients')
+      }
+    })
+  })
+}
 
 const init = async () => {
+  displayAllRecipes()
   getInputValue()
-  displayDropdown()
-  dropdownEvent()
+  eventDropDownInput()
+  eventDropDownList()
 }
 
 init()

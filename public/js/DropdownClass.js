@@ -3,7 +3,7 @@ export class Dropdown {
     this.name = item.name
     const theList = item.list
     const listLi = theList.map((elt) => {
-      return `<li class="list-item activePop ${this.name}" id="option-1" role="option">${elt}</li>`
+      return `<li class="list-item activePop ${this.name}" role="option">${elt}</li>`
     }).join('')
     this.listLi = listLi
   }
@@ -17,10 +17,15 @@ export class Dropdown {
     </li>
     <li aria-expanded="false" class="list-container ${this.name}">
       <ul class="list" role="listbox" id="${this.name}">
-          ${this.listLi}
       </ul>
     </li>
   </ul>
   `
+  }
+
+  creatHtmlList () {
+    return `
+    ${this.listLi}
+    `
   }
 }

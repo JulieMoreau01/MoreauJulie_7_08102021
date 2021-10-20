@@ -1,7 +1,7 @@
-import { displaySearchRecipesTag, removeRecipeFromArray } from './index.js'
+import { displaySearchRecipesTag, removeRecipeFromArray } from './displayRecipes.js'
 
 // DISPLAY SELECTION ON SECTION TAG
-export function setSelectedListItem (event, name) {
+export function creatTag (event, name) {
   const selectedTextToAppend = document.createTextNode(event.target.innerText)
 
   // Creat Tag
@@ -14,6 +14,7 @@ export function setSelectedListItem (event, name) {
 
   // Add tag in array tagValue
   const tagValue = selectedTextToAppend.data.toLowerCase()
+  console.log(tagValue)
   displaySearchRecipesTag(tagValue)
 
   // Remove Tag
