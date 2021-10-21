@@ -1,5 +1,5 @@
 import { Dropdown } from './DropdownClass.js'
-import { dropdownArray } from './listGeneration.js'
+import { dropdownArray } from './updateListTag.js'
 
 // DISPLAY DROPDOWN
 export function displayDropdown () {

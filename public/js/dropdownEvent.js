@@ -1,4 +1,4 @@
-import { uniqueAppareils, uniqueUstensils, uniqueIngredients, updateListeTag } from './listGeneration.js'
+import { uniqueAppareils, uniqueUstensils, uniqueIngredients, updateListTag } from './updateListTag.js'
 
 // OPEN DROPDOWN
 export function openDropDownMenu (item) {
@@ -14,47 +14,71 @@ export function openDropDownMenu (item) {
       item.classList.remove('open')
     }
   })
+  // CLose DropDown on click anywhere else
+  document.addEventListener('click', (event) => {
+    const isClickInsideElement = dropdown.contains(event.target)
+    if (!isClickInsideElement) {
+      list.classList.remove('open')
+    }
+  })
 }
 
+// SORT TAG LIST
 let newList = []
-let name
 export function sortList (item, inputValue) {
   newList = []
   let list
-  if (item.classList.contains('ustensiles') === true) {
-    const list = uniqueUstensils
-    name = 'ustensiles'
-    list.forEach(item => {
-      const itemGood = item.toString().toLowerCase()
-      if (itemGood.includes(inputValue) === true) {
-        newList.push(item)
-      }
-      newList.splice(0, newList.length, ...(new Set(newList)))
-    })
-  } else if (item.classList.contains('appareil') === true) {
-    const list = uniqueAppareils
-    name = 'appareil'
-    list.forEach(item => {
-      const itemGood = item.toString().toLowerCase()
-      if (itemGood.includes(inputValue) === true) {
-        newList.push(item)
-      }
-      newList.splice(0, newList.length, ...(new Set(newList)))
-    })
-  } else if (item.classList.contains('ingredients') === true) {
-    name = 'ingredients'
+  const name = item.getAttribute('class')
+
+  if (name === 'ustensiles') {
+    list = uniqueUstensils
+  } else if (name === 'appareil') {
+    list = uniqueAppareils
+  } else if (name === 'ingredients') {
     list = uniqueIngredients
-    list.forEach(item => {
-      const itemGood = item.toString().toLowerCase()
-      if (itemGood.includes(inputValue) === true) {
-        newList.push(item)
-      }
-      newList.splice(0, newList.length, ...(new Set(newList)))
-    })
   }
+
+  list.forEach(item => {
+    const itemGood = item.toString().toLowerCase()
+    if (itemGood.includes(inputValue) === true) {
+      newList.push(item)
+    }
+    newList.splice(0, newList.length, ...(new Set(newList)))
+  })
   console.log(newList)
+  // if (item.classList.contains('ustensiles') === true) {
+  //   const list = uniqueUstensils
+  //   name = 'ustensiles'
+  //   list.forEach(item => {
+  //     const itemGood = item.toString().toLowerCase()
+  //     if (itemGood.includes(inputValue) === true) {
+  //       newList.push(item)
+  //     }
+  //     newList.splice(0, newList.length, ...(new Set(newList)))
+  //   })
+  // } else if (item.classList.contains('appareil') === true) {
+  //   const list = uniqueAppareils
+  //   name = 'appareil'
+  //   list.forEach(item => {
+  //     const itemGood = item.toString().toLowerCase()
+  //     if (itemGood.includes(inputValue) === true) {
+  //       newList.push(item)
+  //     }
+  //     newList.splice(0, newList.length, ...(new Set(newList)))
+  //   })
+  // } else if (item.classList.contains('ingredients') === true) {
+  //   name = 'ingredients'
+  //   list = uniqueIngredients
+  //   list.forEach(item => {
+  //     const itemGood = item.toString().toLowerCase()
+  //     if (itemGood.includes(inputValue) === true) {
+  //       newList.push(item)
+  //     }
+  //     newList.splice(0, newList.length, ...(new Set(newList)))
+  //   })
+  // }
   const recipesAfterSearch = []
-  updateListeTag(recipesAfterSearch, newList, name)
+  updateListTag(recipesAfterSearch, newList, name)
 }
 
 // CLOSE THE DROPDOWN MENU

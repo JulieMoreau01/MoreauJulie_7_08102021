@@ -3,7 +3,7 @@ export class Dropdown {
     this.name = item.name
     const theList = item.list
     const listLi = theList.map((elt) => {
-      return `<li class="list-item activePop ${this.name}" role="option">${elt}</li>`
+      return `<li class="list-item ${this.name}" role="option">${elt}</li>`
     }).join('')
     this.listLi = listLi
   }
