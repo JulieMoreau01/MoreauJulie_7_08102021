@@ -2,6 +2,7 @@ import { displaySearchRecipesTag, removeRecipeFromArray } from './displayRecipes
 
 // DISPLAY SELECTION ON SECTION TAG
 export function creatTag (event, listName, recipesAfterSearch) {
+  console.log('creatTag')
   const selectedTextToAppend = document.createTextNode(event.target.innerText)
 
   // Creat Tag

@@ -1,9 +1,9 @@
 import { recipes } from './recipes.js'
 import { Recipes } from './RecipesClass.js'
 import { cleanRecipes } from './cleanRecipes.js'
-import { displayDropdown, displayList } from './displayDropdown.js'
 import { updateListTag } from './updateListTag.js'
 import { eventDropDownList, eventDropDownInput } from './index.js'
+import { displayDropdown, displayList } from './displayDropdown.js'
 
 const sectionRecipes = document.getElementById('recipes')
 const noResult = document.getElementById('no_result')
@@ -12,45 +12,15 @@ const input = document.querySelector('input')
 let arrayUpdate = []
 
 function templateRecipes (idRecipe) {
+  console.log('templateRecipes')
   idRecipe = recipes[idRecipe]
   const recipesTemplate = new Recipes(idRecipe)
   sectionRecipes.innerHTML += recipesTemplate.creatHtmlRecipe()
 }
 
-function creatRecipesAfterSearch (recipe, recipesAfterSearch) {
-  recipesAfterSearch.push(recipe)
-  recipesAfterSearch.splice(0, recipesAfterSearch.length, ...(new Set(recipesAfterSearch)))
-  const idRecipe = recipe[0] - 1
-  console.log(recipesAfterSearch)
-  templateRecipes(idRecipe)
-  // Mise à jour des listes de Tag
-  updateListTag(recipesAfterSearch, [], 'noName')
-  displayDropdown()
-  displayList()
-  eventDropDownInput()
-  eventDropDownList(recipesAfterSearch)
-  return recipesAfterSearch
-}
-
-function creatRecipesAfterTag (recipe, recipesAfterSearch) {
-  if ((recipesAfterSearch.length === 0) || (recipesAfterSearch === undefined)) {
-    arrayUpdate = cleanRecipes
-  } else {
-    arrayUpdate = recipesAfterSearch
-  }
-  const idRecipe = recipe[0] - 1
-  delete arrayUpdate[idRecipe]
-  // Mise à jour des listes de Tag
-  updateListTag(recipesAfterSearch, [], 'noName')
-  displayDropdown()
-  displayList()
-  eventDropDownInput()
-  eventDropDownList()
-}
-
 // DISPLAY RECIPES AFTER EVENT ON INPUT
-export function displaySearchRecipesInput (theValue) {
-  let recipesAfterSearch = []
+export function displaySearchRecipesInput (theValue, recipesAfterSearch = []) {
+  console.log(recipesAfterSearch)
   cleanRecipes.forEach(recipe => {
     const nameRecipe = recipe[1].toString().toLowerCase()
     const descriptionRecipe = recipe[5].toString().toLowerCase()
@@ -59,20 +29,30 @@ export function displaySearchRecipesInput (theValue) {
     (descriptionRecipe.includes(theValue) === true) ||
     (ingredients.includes(theValue) === true)) {
       noResult.innerHTML = ''
-      creatRecipesAfterSearch(recipe, recipesAfterSearch)
+      console.log('creatRecipesAfterSearch')
+      recipesAfterSearch.push(recipe)
+      recipesAfterSearch.splice(0, recipesAfterSearch.length, ...(new Set(recipesAfterSearch)))
+      const idRecipe = recipe[0] - 1
+      templateRecipes(idRecipe)
     } else {
       if (sectionRecipes.innerHTML === '') {
         noResult.innerHTML = '<i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère'
       }
     }
   })
+  // Mise à jour des listes de Tag
+  updateListTag(recipesAfterSearch, [], 'noName')
+  displayDropdown()
+  displayList()
+  eventDropDownInput(recipesAfterSearch)
+  eventDropDownList(recipesAfterSearch)
 }
 
 // DISPLAY RECIPES AFTER EVENT ON TAG
-export function displaySearchRecipesTag (tagValue, recipesAfterSearch = []) {
+export function displaySearchRecipesTag (tagValue, recipesAfterSearch) {
+  console.log('displaySearchRecipesTag')
   sectionRecipes.innerHTML = ''
-  console.log('ici' + recipesAfterSearch)
-  if ((recipesAfterSearch.length === 0) || (recipesAfterSearch === undefined)) {
+  if (recipesAfterSearch.length === 0) {
     arrayUpdate = cleanRecipes
   } else {
     arrayUpdate = recipesAfterSearch
@@ -88,15 +68,29 @@ export function displaySearchRecipesTag (tagValue, recipesAfterSearch = []) {
       const idRecipe = recipe[0] - 1
       templateRecipes(idRecipe)
     } else {
-      creatRecipesAfterTag(recipe, recipesAfterSearch)
+      console.log('creatRecipesAfterTag')
+      const idRecipe = recipe[0] - 1
+      if (recipesAfterSearch.length === 0) {
+        delete cleanRecipes[idRecipe]
+        recipesAfterSearch = cleanRecipes
+      } else {
+        delete recipesAfterSearch[idRecipe]
+      }
       if (sectionRecipes.innerHTML === '') {
         noResult.innerHTML = '<i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère'
       }
     }
   })
+  // Mise à jour des listes de Tag
+  updateListTag(recipesAfterSearch, [], 'noName')
+  displayDropdown()
+  displayList()
+  eventDropDownInput(recipesAfterSearch)
+  eventDropDownList(recipesAfterSearch)
 }
 
 export function removeRecipeFromArray (removeValue) {
+  console.log('removeRecipeFromArray')
   const tag = document.querySelectorAll('section#tag ul li')
   if (tag.length === 0) {
     sectionRecipes.innerHTML = ''
