@@ -1,5 +1,5 @@
 import { displaySearchRecipesTag } from './displayRecipes.js'
-import { removeRecipeFromArray } from './remove.js'
+import { removeRecipeFromArray } from './removeRecipes.js'
 
 // DISPLAY SELECTION ON SECTION TAG
 export function creatTag (event, listName, recipesAfterSearch) {

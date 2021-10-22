@@ -1,10 +1,9 @@
 import { recipes } from './data/recipes.js'
 import { Recipes } from './class/Recipes.js'
-import { openDropDownMenu, closeList, sortList } from './function/dropdownEvent.js'
 import { displaySearchRecipesInput } from './function/displayRecipes.js'
 import { updateListTag } from './function/updateListTag.js'
-import { creatTag } from './function/creatTag.js'
 import { displayDropdown, displayList } from './function/displayDropdown.js'
+import { eventDropDownList, eventDropDownInput } from './function/dropdownEvent.js'
 
 const sectionRecipes = document.getElementById('recipes')
 const sectionTag = document.querySelector('#tag ul')
@@ -13,7 +12,9 @@ const input = document.querySelector('input')
 
 let recipesAfterSearch
 
-// Display all the recipes at first
+/**
+ * DISPLAY ALL THE RECIPES
+ */
 export function displayAllRecipes () {
   recipes.forEach(item => {
     const recipesTemplate = new Recipes(item)
@@ -26,7 +27,9 @@ export function displayAllRecipes () {
   eventDropDownList(recipesAfterSearch)
 }
 
-// GET INPUT VALUE
+/**
+ * GET INPUT VALUE
+ */
 function getInputValue () {
   input.addEventListener('keyup', () => {
     sectionRecipes.innerHTML = ''
@@ -40,35 +43,6 @@ function getInputValue () {
       const inputValue = input.value.toLowerCase()
       displaySearchRecipesInput(inputValue, recipesAfterSearch = [])
     }
-  })
-}
-
-export function eventDropDownInput (recipesAfterSearch) {
-  // EVENT ON DROPDOWN INPUT
-  const dropdownInput = document.querySelectorAll('#selected input')
-  dropdownInput.forEach(item => {
-    item.addEventListener('click', () => {
-      openDropDownMenu(item)
-      item.addEventListener('keyup', () => {
-        const inputValue = item.value.toString().toLowerCase()
-        sortList(item, inputValue, recipesAfterSearch)
-      })
-    })
-  })
-}
-
-export function eventDropDownList (recipesAfterSearch) {
-  // EVENT ON DROPDOWN LIST
-  const listItems = document.querySelectorAll('.list-item')
-  listItems.forEach(item => {
-    item.addEventListener('click', event => {
-      const listName = item.getAttribute('class').replace('list-item ', '')
-      if (recipesAfterSearch === undefined) {
-        recipesAfterSearch = []
-      }
-      creatTag(event, listName, recipesAfterSearch)
-      closeList(listName)
-    })
   })
 }
 

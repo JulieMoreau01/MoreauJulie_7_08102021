@@ -1,4 +1,4 @@
-import { cleanRecipes } from './cleanRecipes.js'
+import { cleanRecipes } from '../data/cleanRecipes.js'
 
 export let uniqueUstensils
 export let uniqueAppareils

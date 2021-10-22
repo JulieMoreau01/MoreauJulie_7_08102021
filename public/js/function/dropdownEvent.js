@@ -1,10 +1,8 @@
-import { displayList } from './displayDropdown.js'
-import { uniqueAppareils, uniqueUstensils, uniqueIngredients, updateListTag } from './updateListTag.js'
-import { eventDropDownList, eventDropDownInput } from '../index.js'
+import { creatTag } from './tagCreat.js'
+import { sortList } from './tagSort.js'
 
 // OPEN DROPDOWN
 export function openDropDownMenu (item) {
-  console.log(item)
   const dropdown = item.parentElement.parentElement
   const dropdownAll = document.querySelectorAll('ul.dropdown')
   const listAll = document.querySelectorAll('.list')
@@ -35,32 +33,39 @@ export function openDropDownMenu (item) {
   })
 }
 
-// SORT TAG LIST
-let newList
-let list
-export function sortList (item, inputValue, recipesAfterSearch) {
-  newList = []
-  const name = item.getAttribute('class')
-
-  if (name === 'ustensiles') {
-    list = uniqueUstensils
-  } else if (name === 'appareil') {
-    list = uniqueAppareils
-  } else if (name === 'ingredients') {
-    list = uniqueIngredients
-  }
-
-  list.forEach(item => {
-    const itemGood = item.toString().toLowerCase()
-    if (itemGood.includes(inputValue) === true) {
-      newList.push(item)
-    }
-    newList.splice(0, newList.length, ...(new Set(newList)))
+/**
+ * EVENT ON INPUT
+ */
+export function eventDropDownInput (recipesAfterSearch) {
+  // EVENT ON DROPDOWN INPUT
+  const dropdownInput = document.querySelectorAll('#selected input')
+  dropdownInput.forEach(item => {
+    item.addEventListener('click', () => {
+      openDropDownMenu(item)
+      item.addEventListener('keyup', () => {
+        const inputValue = item.value.toString().toLowerCase()
+        sortList(item, inputValue, recipesAfterSearch)
+      })
+    })
   })
-  updateListTag(recipesAfterSearch, newList, name)
-  displayList()
-  eventDropDownInput(recipesAfterSearch)
-  eventDropDownList(recipesAfterSearch)
+}
+
+/**
+ * EVENT ON LIST ITEM
+ */
+export function eventDropDownList (recipesAfterSearch) {
+  // EVENT ON DROPDOWN LIST
+  const listItems = document.querySelectorAll('.list-item')
+  listItems.forEach(item => {
+    item.addEventListener('click', event => {
+      const listName = item.getAttribute('class').replace('list-item ', '')
+      if (recipesAfterSearch === undefined) {
+        recipesAfterSearch = []
+      }
+      creatTag(event, listName, recipesAfterSearch)
+      closeList(listName)
+    })
+  })
 }
 
 // CLOSE THE DROPDOWN MENU

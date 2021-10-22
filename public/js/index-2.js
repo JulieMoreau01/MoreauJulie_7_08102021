@@ -1,7 +1,7 @@
 import { recipes } from './data/recipes.js'
 import { Recipes } from './class/Recipes.js'
 import { displayDropdown, dropdownSort } from './function/dropdownEvent.js'
-import { newRecipes, newIngredients } from './function/cleanRecipes.js'
+import { newRecipes, newIngredients } from './data/cleanRecipes.js'
 
 const sectionRecipes = document.getElementById('recipes')
 const noResult = document.getElementById('no_result')

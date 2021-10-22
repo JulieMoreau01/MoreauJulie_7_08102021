@@ -106,7 +106,15 @@
   }
   ul.dropdown.arrowOpen {
     border-radius : 5px 5px 0px 0px !important;
-    width: 70vh;
+    @include media(phone) {
+      width: 100%;
+    }
+    @include media(desktop) {
+      width: 40vh;
+    }
+    @include media(big) {
+      width: 70vh;
+    }
   }
 
   ul.dropdown.appareil, 
@@ -157,6 +165,9 @@
       width: 100%;
     }
     @include media(desktop) {
+      width: 40vh;
+    }
+    @include media(big) {
       width: 70vh;
     }
   }
