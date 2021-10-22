@@ -1,14 +1,12 @@
 import { recipes } from '../data/recipes.js'
 import { Recipes } from '../class/Recipes.js'
-import { cleanRecipes } from '../data/cleanRecipes.js'
+import { cleanRecipes, cleanRecipesTag } from '../data/cleanRecipes.js'
 import { updateListTag } from './updateListTag.js'
 import { eventDropDownList, eventDropDownInput } from './dropdownEvent.js'
 import { displayDropdown, displayList } from './displayDropdown.js'
 
 const sectionRecipes = document.getElementById('recipes')
 const noResult = document.getElementById('no_result')
-
-// let arrayUpdate = []
 
 function templateRecipes (idRecipe) {
   idRecipe = recipes[idRecipe]
@@ -42,6 +40,7 @@ export function displaySearchRecipesInput (theValue, recipesAfterSearch = []) {
   displayList()
   eventDropDownInput(recipesAfterSearch)
   eventDropDownList(recipesAfterSearch)
+  console.log(recipesAfterSearch)
 }
 
 // DISPLAY RECIPES AFTER EVENT ON TAG
@@ -49,11 +48,17 @@ export function displaySearchRecipesTag (tagValue, recipesAfterSearch) {
   let arrayUpdate = []
   sectionRecipes.innerHTML = ''
   if (recipesAfterSearch.length === 0) {
-    arrayUpdate = cleanRecipes
+    console.log(cleanRecipesTag)
+    arrayUpdate = cleanRecipesTag
   } else {
     arrayUpdate = recipesAfterSearch
   }
+  let count = 0
   arrayUpdate.forEach(recipe => {
+    count++
+    if (count === 1) {
+      arrayUpdate = []
+    }
     const ustensilesRecipe = recipe[7].toString().toLowerCase()
     const appareilRecipe = recipe[6].toString().toLowerCase()
     const ingredients = recipe[3].toString().toLowerCase()
@@ -63,22 +68,16 @@ export function displaySearchRecipesTag (tagValue, recipesAfterSearch) {
       noResult.innerHTML = ''
       const idRecipe = recipe[0] - 1
       templateRecipes(idRecipe)
+      arrayUpdate.push(recipe)
+      arrayUpdate.splice(0, arrayUpdate.length, ...(new Set(arrayUpdate)))
+      recipesAfterSearch = arrayUpdate
     } else {
-      const idRecipe = recipe[0] - 1
-      if (recipesAfterSearch.length === 0) {
-        delete cleanRecipes[idRecipe]
-        recipesAfterSearch = cleanRecipes
-        // const recipesAfterTag = cleanRecipes
-        // delete recipesAfterTag[idRecipe]
-        // recipesAfterSearch = recipesAfterTag
-      } else {
-        delete recipesAfterSearch[idRecipe]
-      }
       if (sectionRecipes.innerHTML === '') {
         noResult.innerHTML = '<i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère'
       }
     }
   })
+  console.log(recipesAfterSearch)
   // Mise à jour des listes de Tag
   updateListTag(recipesAfterSearch, [], 'noName')
   displayDropdown()
