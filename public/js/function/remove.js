@@ -1,4 +1,3 @@
-//import { cleanRecipes } from './cleanRecipes.js'
 import { displaySearchRecipesTag, displaySearchRecipesInput } from './displayRecipes.js'
 
 const sectionRecipes = document.getElementById('recipes')

@@ -42,67 +42,6 @@ header figure img {
   width: auto;
 }
 
-#search {
-  position: relative;
-}
-#search input {
-  width: 100%;
-  height: 69px;
-  background-color: #E7E7E7;
-  border: 0px;
-  border-radius: 5px;
-  padding: 22px;
-  margin: 0 0 25px 0;
-  display: block;
-}
-#search input:placeholder-shown {
-  font-size: 1.125rem;
-  color: rgba(0, 0, 0, 0.25);
-}
-#search p.picto {
-  position: absolute;
-  right: 22px;
-  top: 11px;
-  margin: 0;
-  font-size: 2rem;
-}
-#search p#no_result {
-  color: orange;
-}
-
-#tag ul {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
-  display: flex;
-  margin: 0 0 20px 0;
-}
-#tag ul li {
-  height: 37px;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-right: 15px;
-  font-weight: 700;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.875rem;
-}
-#tag ul li i {
-  margin-left: 13px;
-  font-size: 1.25rem;
-}
-#tag ul li.ingredients {
-  background-color: #3282F7;
-}
-#tag ul li.appareil {
-  background-color: #68D9A4;
-}
-#tag ul li.ustensiles {
-  background-color: #ED6454;
-}
-
 #filter {
   display: flex;
   flex-wrap: wrap;
@@ -368,6 +307,88 @@ header figure img {
 }
 #recipes article:nth-child(3n) {
   margin-right: 0px;
+}
+
+#search {
+  position: relative;
+}
+#search label {
+  display: none;
+}
+#search input {
+  width: 100%;
+  height: 69px;
+  background-color: #E7E7E7;
+  border: 0px;
+  border-radius: 5px;
+  padding: 22px;
+  margin: 0 0 25px 0;
+  display: block;
+}
+#search input:placeholder-shown {
+  font-size: 1.125rem;
+  color: rgba(0, 0, 0, 0.25);
+}
+#search p.picto {
+  position: absolute;
+  right: 22px;
+  top: 11px;
+  margin: 0;
+  font-size: 2rem;
+}
+@media screen and (min-width: 0px) {
+  #search p.picto {
+    display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #search p.picto {
+    display: block;
+  }
+}
+#search p#no_result {
+  color: orange;
+}
+
+#tag ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  margin: 0 0 20px 0;
+}
+#tag ul li {
+  height: 37px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 15px;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.875rem;
+}
+#tag ul li i {
+  margin-left: 13px;
+  font-size: 1.25rem;
+}
+#tag ul li.ingredients {
+  background-color: #3282F7;
+}
+#tag ul li.appareil {
+  background-color: #68D9A4;
+}
+#tag ul li.ustensiles {
+  background-color: #ED6454;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: flex;
 }
 
 /*# sourceMappingURL=style.css.map */

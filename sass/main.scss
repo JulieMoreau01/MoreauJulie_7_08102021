@@ -10,7 +10,10 @@
 @import "layout/header.scss/";
 
 //PAGES
-@import "pages/index.scss/";
+@import "pages/index_filter.scss/";
+@import "pages/index_recipes.scss/";
+@import "pages/index_search.scss/";
+@import "pages/index_tag.scss/";
 
 //COMPOSANT
 @import "composants/composants.scss/";

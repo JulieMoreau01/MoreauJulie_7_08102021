@@ -1,10 +1,10 @@
-import { recipes } from './recipes.js'
-import { Recipes } from './RecipesClass.js'
-import { openDropDownMenu, closeList, sortList } from './dropdownEvent.js'
-import { displaySearchRecipesInput } from './displayRecipes.js'
-import { updateListTag } from './updateListTag.js'
-import { creatTag } from './creatTag.js'
-import { displayDropdown, displayList } from './displayDropdown.js'
+import { recipes } from './data/recipes.js'
+import { Recipes } from './class/Recipes.js'
+import { openDropDownMenu, closeList, sortList } from './function/dropdownEvent.js'
+import { displaySearchRecipesInput } from './function/displayRecipes.js'
+import { updateListTag } from './function/updateListTag.js'
+import { creatTag } from './function/creatTag.js'
+import { displayDropdown, displayList } from './function/displayDropdown.js'
 
 const sectionRecipes = document.getElementById('recipes')
 const sectionTag = document.querySelector('#tag ul')

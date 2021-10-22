@@ -1,8 +1,8 @@
-import { recipes } from './recipes.js'
-import { Recipes } from './RecipesClass.js'
+import { recipes } from '../data/recipes.js'
+import { Recipes } from '../class/Recipes.js'
 import { cleanRecipes } from './cleanRecipes.js'
 import { updateListTag } from './updateListTag.js'
-import { eventDropDownList, eventDropDownInput } from './index.js'
+import { eventDropDownList, eventDropDownInput } from '../index.js'
 import { displayDropdown, displayList } from './displayDropdown.js'
 
 const sectionRecipes = document.getElementById('recipes')

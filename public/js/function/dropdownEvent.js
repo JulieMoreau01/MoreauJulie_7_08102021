@@ -1,6 +1,6 @@
 import { displayList } from './displayDropdown.js'
 import { uniqueAppareils, uniqueUstensils, uniqueIngredients, updateListTag } from './updateListTag.js'
-import { eventDropDownList, eventDropDownInput } from './index.js'
+import { eventDropDownList, eventDropDownInput } from '../index.js'
 
 // OPEN DROPDOWN
 export function openDropDownMenu (item) {

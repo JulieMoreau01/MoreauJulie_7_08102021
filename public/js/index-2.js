@@ -1,13 +1,13 @@
-import { recipes } from './recipes.js'
-import { Recipes } from './RecipesClass.js'
-import { displayDropdown, dropdownSort } from './dropdownEvent.js'
-import { newRecipes, newIngredients } from './cleanRecipes.js'
+import { recipes } from './data/recipes.js'
+import { Recipes } from './class/Recipes.js'
+import { displayDropdown, dropdownSort } from './function/dropdownEvent.js'
+import { newRecipes, newIngredients } from './function/cleanRecipes.js'
 
 const sectionRecipes = document.getElementById('recipes')
 const noResult = document.getElementById('no_result')
 const input = document.querySelector('input')
 
-// Template OF CLASS RecipesClass
+// Template OF CLASS Recipes
 function templateRecipes (count) {
   const item = recipes[count]
   const recipesTemplate = new Recipes(item)

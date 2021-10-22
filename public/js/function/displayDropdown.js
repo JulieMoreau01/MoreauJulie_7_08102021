@@ -1,4 +1,4 @@
-import { Dropdown } from './DropdownClass.js'
+import { Dropdown } from '../class/Dropdown.js'
 import { dropdownArray } from './updateListTag.js'
 
 // DISPLAY DROPDOWN

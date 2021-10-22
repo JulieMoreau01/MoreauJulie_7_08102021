@@ -1,0 +1,36 @@
+#tag {
+  ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    margin : 0 0 20px 0;
+    li {
+      height: 37px;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin-right: 15px;
+      font-weight: 700;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include font-size(14);
+      i {
+        margin-left: 13px;
+        @include font-size(20)
+      }
+    }
+  }
+  ul {
+    li.ingredients {
+      background-color: $color-filtre-one;
+    }
+    li.appareil {
+      background-color: $color-filtre-two;
+    }
+    li.ustensiles {
+      background-color: $color-filtre-three;
+    }
+  }
+}
