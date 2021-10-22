@@ -112,7 +112,6 @@ header figure img {
   display: block;
   list-style: none;
   position: relative;
-  height: 69px;
   cursor: pointer;
   padding: 0 0 0;
   border-radius: 5px;
@@ -121,12 +120,14 @@ header figure img {
   #filter ul.dropdown {
     width: 100%;
     margin: 0 0px 20px 0px;
+    height: max-content;
   }
 }
 @media screen and (min-width: 1024px) {
   #filter ul.dropdown {
-    width: max-content;
+    width: 170px;
     margin: 0 20px 0 0px;
+    height: 69px;
   }
 }
 #filter ul.dropdown li.label {
@@ -162,10 +163,11 @@ header figure img {
   text-align: left;
   cursor: pointer;
   border: 0;
-  transition: transform 0.2s linear;
+  transition: transform 4s linear;
+  outline: none;
 }
 #filter ul.dropdown li#selected input:focus {
-  width: 50vh;
+  outline: none;
 }
 #filter ul.dropdown li#selected input::placeholder {
   text-transform: capitalize;
@@ -175,8 +177,12 @@ header figure img {
 #filter ul.dropdown li.list-container {
   position: relative;
 }
+#filter ul.dropdown li.list-container ul.list {
+  padding: 0px 20px 20px 20px;
+}
 #filter ul.dropdown li.list-container ul.list li.list-item {
-  padding: 5px 0px 5px 15px;
+  width: 35%;
+  padding: 3px 5px;
   transition: background-color 0.1s linear, color 0.1s linear;
   color: white;
   list-style-position: inside;
@@ -204,8 +210,12 @@ header figure img {
   font-weight: 900;
   font-family: "FontAwesome";
 }
+#filter ul.dropdown:last-child {
+  margin-right: 0px;
+}
 #filter ul.dropdown.arrowOpen {
   border-radius: 5px 5px 0px 0px !important;
+  width: 70vh;
 }
 #filter ul.dropdown.appareil,
 #filter ul.dropdown.appareil ul.list {
@@ -245,8 +255,19 @@ header figure img {
 #filter ul.open {
   opacity: 1;
   overflow: auto;
-  max-height: 300px;
-  width: 50vh;
+  max-height: 360px;
+  z-index: 1000;
+  position: relative;
+}
+@media screen and (min-width: 0px) {
+  #filter ul.open {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #filter ul.open {
+    width: 70vh;
+  }
 }
 
 #recipes {
@@ -347,14 +368,6 @@ header figure img {
 }
 #recipes article:nth-child(3n) {
   margin-right: 0px;
-}
-
-.hidden {
-  display: none;
-}
-
-.show {
-  display: flex;
 }
 
 /*# sourceMappingURL=style.css.map */

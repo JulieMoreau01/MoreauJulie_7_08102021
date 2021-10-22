@@ -11,7 +11,7 @@ export class Dropdown {
   // Template HTML
   creatHtmlDropdown () {
     return `
-    <ul class="dropdown ${this.name}">
+    <ul class="dropdown ${this.name}" id="${this.name}">
     <li id="selected">
       <input aria-haspopup="true" aria-label="Trier par ${this.name}" placeholder="${this.name}" class="${this.name}" />
     </li>

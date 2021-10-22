@@ -7,12 +7,10 @@ import { displayDropdown, displayList } from './displayDropdown.js'
 
 const sectionRecipes = document.getElementById('recipes')
 const noResult = document.getElementById('no_result')
-const input = document.querySelector('input')
 
-let arrayUpdate = []
+// let arrayUpdate = []
 
 function templateRecipes (idRecipe) {
-  console.log('templateRecipes')
   idRecipe = recipes[idRecipe]
   const recipesTemplate = new Recipes(idRecipe)
   sectionRecipes.innerHTML += recipesTemplate.creatHtmlRecipe()
@@ -20,7 +18,6 @@ function templateRecipes (idRecipe) {
 
 // DISPLAY RECIPES AFTER EVENT ON INPUT
 export function displaySearchRecipesInput (theValue, recipesAfterSearch = []) {
-  console.log(recipesAfterSearch)
   cleanRecipes.forEach(recipe => {
     const nameRecipe = recipe[1].toString().toLowerCase()
     const descriptionRecipe = recipe[5].toString().toLowerCase()
@@ -29,7 +26,6 @@ export function displaySearchRecipesInput (theValue, recipesAfterSearch = []) {
     (descriptionRecipe.includes(theValue) === true) ||
     (ingredients.includes(theValue) === true)) {
       noResult.innerHTML = ''
-      console.log('creatRecipesAfterSearch')
       recipesAfterSearch.push(recipe)
       recipesAfterSearch.splice(0, recipesAfterSearch.length, ...(new Set(recipesAfterSearch)))
       const idRecipe = recipe[0] - 1
@@ -50,7 +46,7 @@ export function displaySearchRecipesInput (theValue, recipesAfterSearch = []) {
 
 // DISPLAY RECIPES AFTER EVENT ON TAG
 export function displaySearchRecipesTag (tagValue, recipesAfterSearch) {
-  console.log('displaySearchRecipesTag')
+  let arrayUpdate = []
   sectionRecipes.innerHTML = ''
   if (recipesAfterSearch.length === 0) {
     arrayUpdate = cleanRecipes
@@ -68,11 +64,13 @@ export function displaySearchRecipesTag (tagValue, recipesAfterSearch) {
       const idRecipe = recipe[0] - 1
       templateRecipes(idRecipe)
     } else {
-      console.log('creatRecipesAfterTag')
       const idRecipe = recipe[0] - 1
       if (recipesAfterSearch.length === 0) {
         delete cleanRecipes[idRecipe]
         recipesAfterSearch = cleanRecipes
+        // const recipesAfterTag = cleanRecipes
+        // delete recipesAfterTag[idRecipe]
+        // recipesAfterSearch = recipesAfterTag
       } else {
         delete recipesAfterSearch[idRecipe]
       }
@@ -87,22 +85,4 @@ export function displaySearchRecipesTag (tagValue, recipesAfterSearch) {
   displayList()
   eventDropDownInput(recipesAfterSearch)
   eventDropDownList(recipesAfterSearch)
-}
-
-export function removeRecipeFromArray (removeValue) {
-  console.log('removeRecipeFromArray')
-  const tag = document.querySelectorAll('section#tag ul li')
-  if (tag.length === 0) {
-    sectionRecipes.innerHTML = ''
-    const inputValue = input.value.toLowerCase()
-    displaySearchRecipesInput(inputValue)
-  } else {
-    tag.forEach(item => {
-      sectionRecipes.innerHTML = ''
-      const tagValue = item.textContent.toLowerCase()
-      const inputValue = input.value.toLowerCase()
-      displaySearchRecipesInput(inputValue)
-      displaySearchRecipesTag(tagValue)
-    })
-  }
 }

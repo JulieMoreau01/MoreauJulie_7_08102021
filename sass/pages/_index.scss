@@ -72,14 +72,16 @@
     @include media(phone) {
       width: 100%;
       margin: 0 0px 20px 0px;
+      height: max-content;
     }
     @include media(desktop) {
-      width: max-content;
+      width: 170px;
       margin: 0 20px 0 0px;
+      height: 69px;
     }
     list-style: none;
     position: relative;
-    height: 69px;
+    
     cursor: pointer;
     padding: 0 0 0;
     border-radius: 5px;
@@ -115,9 +117,10 @@
         text-align: left;
         cursor: pointer;
         border: 0;
-        transition: transform .2s linear;
+        transition: transform 4s linear;
+        outline: none;
         &:focus {
-          width: 50vh;
+          outline: none;
         }
         &::placeholder {
           text-transform: capitalize;
@@ -129,8 +132,10 @@
     li.list-container {
       position: relative;
       ul.list {
+        padding: 0px 20px 20px 20px;
         li.list-item {
-          padding:5px 0px 5px 15px;
+          width: 35%;
+          padding: 3px 5px;
           transition: background-color .1s linear, color .1s linear;
           color: white;
           list-style-position: inside;
@@ -161,8 +166,12 @@
       font-family: 'FontAwesome';
     }
   }
+  ul.dropdown:last-child {
+    margin-right: 0px;
+  }
   ul.dropdown.arrowOpen {
     border-radius : 5px 5px 0px 0px !important;
+    width: 70vh;
   }
 
   ul.dropdown.appareil, 
@@ -206,8 +215,15 @@
   ul.open {
     opacity: 1;
     overflow: auto;
-    max-height: 300px;
-    width: 50vh;
+    max-height: 360px;
+    z-index: 1000;
+    position: relative;
+    @include media(phone) {
+      width: 100%;
+    }
+    @include media(desktop) {
+      width: 70vh;
+    }
   }
 }
 

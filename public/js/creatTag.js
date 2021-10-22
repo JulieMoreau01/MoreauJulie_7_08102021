@@ -1,8 +1,8 @@
-import { displaySearchRecipesTag, removeRecipeFromArray } from './displayRecipes.js'
+import { displaySearchRecipesTag } from './displayRecipes.js'
+import { removeRecipeFromArray } from './remove.js'
 
 // DISPLAY SELECTION ON SECTION TAG
 export function creatTag (event, listName, recipesAfterSearch) {
-  console.log('creatTag')
   const selectedTextToAppend = document.createTextNode(event.target.innerText)
 
   // Creat Tag
@@ -25,7 +25,7 @@ export function creatTag (event, listName, recipesAfterSearch) {
       parent.remove()
       const value = parent.firstChild.data
       const removeValue = value.toString().toLowerCase()
-      removeRecipeFromArray(removeValue)
+      removeRecipeFromArray(removeValue, recipesAfterSearch)
     })
   })
 }

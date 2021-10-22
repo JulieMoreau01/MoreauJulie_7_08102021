@@ -4,14 +4,14 @@ import { eventDropDownList, eventDropDownInput } from './index.js'
 
 // OPEN DROPDOWN
 export function openDropDownMenu (item) {
-  console.log('openDropDownMenu')
+  console.log(item)
   const dropdown = item.parentElement.parentElement
+  const dropdownAll = document.querySelectorAll('ul.dropdown')
   const listAll = document.querySelectorAll('.list')
   const list = dropdown.querySelector('.list')
-  console.log(list)
   const idName = list.getAttribute('id')
-  dropdown.classList.toggle('arrowOpen')
-  list.classList.toggle('open')
+  list.classList.add('open')
+  dropdown.classList.add('arrowOpen')
   // Close Other Dropdown
   listAll.forEach(item => {
     const idNameItem = item.getAttribute('id')
@@ -19,11 +19,18 @@ export function openDropDownMenu (item) {
       item.classList.remove('open')
     }
   })
+  dropdownAll.forEach(item => {
+    const idNameItem = item.getAttribute('id')
+    if ((item.classList.contains('arrowOpen') === true) && (idNameItem !== idName)) {
+      item.classList.remove('arrowOpen')
+    }
+  })
   // CLose DropDown on click anywhere else
   document.addEventListener('click', (event) => {
     const isClickInsideElement = dropdown.contains(event.target)
     if (!isClickInsideElement) {
       list.classList.remove('open')
+      dropdown.classList.remove('arrowOpen')
     }
   })
 }
@@ -32,7 +39,6 @@ export function openDropDownMenu (item) {
 let newList
 let list
 export function sortList (item, inputValue, recipesAfterSearch) {
-  console.log('sortList')
   newList = []
   const name = item.getAttribute('class')
 
@@ -59,7 +65,6 @@ export function sortList (item, inputValue, recipesAfterSearch) {
 
 // CLOSE THE DROPDOWN MENU
 export function closeList (item) {
-  console.log('closeList')
   const dropdown = document.querySelector('ul.' + item)
   const list = dropdown.querySelector('.list')
   list.classList.remove('open')

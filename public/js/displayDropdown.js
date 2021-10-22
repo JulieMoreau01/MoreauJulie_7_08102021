@@ -3,7 +3,6 @@ import { dropdownArray } from './updateListTag.js'
 
 // DISPLAY DROPDOWN
 export function displayDropdown () {
-  console.log('displayDropdown')
   const sectionFilter = document.getElementById('filter')
   sectionFilter.innerHTML = ''
   dropdownArray.forEach(item => {
@@ -14,7 +13,6 @@ export function displayDropdown () {
 
 // DISPLAY LIST
 export function displayList () {
-  console.log('displayList')
   const ulContainer = document.querySelectorAll('section#filter ul.dropdown ul.list')
   let count = -1
   ulContainer.forEach(item => {

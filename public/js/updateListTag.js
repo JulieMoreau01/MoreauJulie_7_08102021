@@ -6,7 +6,6 @@ export let uniqueIngredients
 export let dropdownArray
 
 export function updateListTag (recipesAfterSearch, newList, name) {
-  console.log('updateListTag')
   if (newList.length === 0) {
     let arrayUpdate
     if (recipesAfterSearch.length === 0) {
@@ -59,12 +58,12 @@ export function updateListTag (recipesAfterSearch, newList, name) {
       list: uniqueIngredients
     },
     {
-      name: 'ustensiles',
-      list: uniqueUstensils
-    },
-    {
       name: 'appareil',
       list: uniqueAppareils
+    },
+    {
+      name: 'ustensiles',
+      list: uniqueUstensils
     }
   ]
 }
