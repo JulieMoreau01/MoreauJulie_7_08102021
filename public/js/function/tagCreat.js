@@ -23,9 +23,7 @@ export function creatTag (event, listName, recipesAfterSearch) {
     item.addEventListener('click', () => {
       const parent = item.parentElement
       parent.remove()
-      const value = parent.firstChild.data
-      const removeValue = value.toString().toLowerCase()
-      removeRecipeFromArray(removeValue, recipesAfterSearch)
+      removeRecipeFromArray()
     })
   })
 }

@@ -31,6 +31,7 @@ export function displayAllRecipes () {
  * GET INPUT VALUE
  */
 function getInputValue () {
+  input.value = ''
   input.addEventListener('keyup', () => {
     sectionRecipes.innerHTML = ''
     noResult.innerHTML = ''

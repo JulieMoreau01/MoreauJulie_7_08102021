@@ -8,7 +8,7 @@ import { displayDropdown, displayList } from './displayDropdown.js'
 const sectionRecipes = document.getElementById('recipes')
 const noResult = document.getElementById('no_result')
 
-function templateRecipes (idRecipe) {
+export function templateRecipes (idRecipe) {
   idRecipe = recipes[idRecipe]
   const recipesTemplate = new Recipes(idRecipe)
   sectionRecipes.innerHTML += recipesTemplate.creatHtmlRecipe()
@@ -40,7 +40,6 @@ export function displaySearchRecipesInput (theValue, recipesAfterSearch = []) {
   displayList()
   eventDropDownInput(recipesAfterSearch)
   eventDropDownList(recipesAfterSearch)
-  console.log(recipesAfterSearch)
 }
 
 // DISPLAY RECIPES AFTER EVENT ON TAG
@@ -48,7 +47,6 @@ export function displaySearchRecipesTag (tagValue, recipesAfterSearch) {
   let arrayUpdate = []
   sectionRecipes.innerHTML = ''
   if (recipesAfterSearch.length === 0) {
-    console.log(cleanRecipesTag)
     arrayUpdate = cleanRecipesTag
   } else {
     arrayUpdate = recipesAfterSearch
@@ -77,7 +75,6 @@ export function displaySearchRecipesTag (tagValue, recipesAfterSearch) {
       }
     }
   })
-  console.log(recipesAfterSearch)
   // Mise à jour des listes de Tag
   updateListTag(recipesAfterSearch, [], 'noName')
   displayDropdown()
