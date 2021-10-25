@@ -31,7 +31,6 @@ export function displaySearchRecipesInput (theValue, recipesAfterSearch = []) {
       recipesAfterSearch.splice(0, recipesAfterSearch.length, ...(new Set(recipesAfterSearch)))
       const idRecipe = recipe[0] - 1
       templateRecipes(idRecipe)
-      console.log(recipesAfterSearch)
     } else {
       if (sectionRecipes.innerHTML === '') {
         noResult.innerHTML = '<span><i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère</span>'
