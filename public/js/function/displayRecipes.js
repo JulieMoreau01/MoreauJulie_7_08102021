@@ -18,7 +18,8 @@ export function templateRecipes (idRecipe) {
  * DISPLAY RECIPES AFTER EVENT ON INPUT
  */
 export function displaySearchRecipesInput (theValue, recipesAfterSearch = []) {
-  cleanRecipes.forEach(recipe => {
+  for (let i = 0; i < cleanRecipes.length; i++) {
+    const recipe = cleanRecipes[i]
     const nameRecipe = recipe[1].toString().toLowerCase()
     const descriptionRecipe = recipe[5].toString().toLowerCase()
     const ingredients = recipe[3].toString().toLowerCase()
@@ -35,7 +36,7 @@ export function displaySearchRecipesInput (theValue, recipesAfterSearch = []) {
         noResult.innerHTML = '<span><i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère</span>'
       }
     }
-  })
+  }
   // Mise à jour des listes de Tag
   updateListTag(recipesAfterSearch, [], 'noName')
   displayDropdown()
