@@ -42,7 +42,10 @@ function getInputValue () {
       displayAllRecipes()
     } else if (input.value.length > 2) {
       const inputValue = input.value.toLowerCase()
+      const t0 = performance.now()
       displaySearchRecipesInput(inputValue, recipesAfterSearch = [])
+      const t1 = performance.now()
+      console.log('DisplaySearchRecipesInput a demandé ' + (t1 - t0) + ' millisecondes.')
     }
   })
 }
