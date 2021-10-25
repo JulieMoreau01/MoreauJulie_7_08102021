@@ -33,6 +33,9 @@ export function removeRecipeFromArray () {
   }
 }
 
+/**
+ * DISPLAY RECIPES AFTER REMOVE TAG
+ */
 function removeDisplaySearchRecipesTag (tag) {
   const inputValue = input.value.toLowerCase()
   const listOfTag = []

@@ -1,18 +1,20 @@
 import { recipes } from './recipes.js'
 
 /**
- * REMOVE OBJECT FROM RECIPES.JS
+ * REMOVE OBJECTS FROM RECIPES.JS
  */
 export const cleanRecipes = []
+export const cleanRecipesTag = []
 
 recipes.forEach(item => {
   const newArray = Object.values(item)
   cleanRecipes.push(newArray)
+  cleanRecipesTag.push(newArray)
 })
 
-let ingredient
-
+// Add Array ingredient in cleanRecipes
 cleanRecipes.forEach(recipe => {
+  let ingredient
   let nameId = recipe[0]
   nameId = []
   recipe[3].forEach(item => {
@@ -23,19 +25,9 @@ cleanRecipes.forEach(recipe => {
   recipe[3] = nameId
 })
 
-/**
- * REMOVE OBJECT FROM RECIPES.JS
- */
-export const cleanRecipesTag = []
-
-recipes.forEach(item => {
-  const newArray = Object.values(item)
-  cleanRecipesTag.push(newArray)
-})
-
-let ingredientTag
-
+// Add Array ingredient in cleanRecipesTag
 cleanRecipesTag.forEach(recipe => {
+  let ingredientTag
   let nameId = recipe[0]
   nameId = []
   recipe[3].forEach(item => {

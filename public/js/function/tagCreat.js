@@ -1,7 +1,9 @@
 import { displaySearchRecipesTag } from './displayRecipes.js'
 import { removeRecipeFromArray } from './removeRecipes.js'
 
-// DISPLAY SELECTION ON SECTION TAG
+/**
+ * DISPLAY TAG
+ */
 export function creatTag (event, listName, recipesAfterSearch) {
   const selectedTextToAppend = document.createTextNode(event.target.innerText)
 
@@ -13,7 +15,7 @@ export function creatTag (event, listName, recipesAfterSearch) {
   newLi.appendChild(selectedTextToAppend)
   newLi.innerHTML += '<i class="far fa-times-circle"></i>'
 
-  // Send the tag value to the display function
+  // Send the tag value
   const tagValue = selectedTextToAppend.data.toLowerCase()
   displaySearchRecipesTag(tagValue, recipesAfterSearch)
 

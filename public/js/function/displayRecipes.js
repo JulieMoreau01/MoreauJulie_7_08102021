@@ -14,7 +14,9 @@ export function templateRecipes (idRecipe) {
   sectionRecipes.innerHTML += recipesTemplate.creatHtmlRecipe()
 }
 
-// DISPLAY RECIPES AFTER EVENT ON INPUT
+/**
+ * DISPLAY RECIPES AFTER EVENT ON INPUT
+ */
 export function displaySearchRecipesInput (theValue, recipesAfterSearch = []) {
   cleanRecipes.forEach(recipe => {
     const nameRecipe = recipe[1].toString().toLowerCase()
@@ -42,7 +44,9 @@ export function displaySearchRecipesInput (theValue, recipesAfterSearch = []) {
   eventDropDownList(recipesAfterSearch)
 }
 
-// DISPLAY RECIPES AFTER EVENT ON TAG
+/**
+ * DISPLAY RECIPES AFTER EVENT ON DROPDOWN LIST
+ */
 export function displaySearchRecipesTag (tagValue, recipesAfterSearch) {
   let arrayUpdate = []
   sectionRecipes.innerHTML = ''

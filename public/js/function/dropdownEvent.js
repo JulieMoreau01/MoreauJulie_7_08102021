@@ -1,7 +1,9 @@
 import { creatTag } from './tagCreat.js'
 import { sortList } from './tagSort.js'
 
-// OPEN DROPDOWN
+/**
+ * OPEN DROPDOWN
+ */
 export function openDropDownMenu (item) {
   const dropdown = item.parentElement.parentElement
   const dropdownAll = document.querySelectorAll('ul.dropdown')
@@ -51,7 +53,7 @@ export function eventDropDownInput (recipesAfterSearch) {
 }
 
 /**
- * EVENT ON LIST ITEM
+ * EVENT ON DROPDOWN LIST ITEM
  */
 export function eventDropDownList (recipesAfterSearch) {
   // EVENT ON DROPDOWN LIST
@@ -68,7 +70,9 @@ export function eventDropDownList (recipesAfterSearch) {
   })
 }
 
-// CLOSE THE DROPDOWN MENU
+/**
+ * CLOSE THE DROPDOWN MENU
+ */
 export function closeList (item) {
   const dropdown = document.querySelector('ul.' + item)
   const list = dropdown.querySelector('.list')

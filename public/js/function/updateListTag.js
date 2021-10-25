@@ -5,6 +5,9 @@ export let uniqueAppareils
 export let uniqueIngredients
 export let dropdownArray
 
+/**
+ * UPDATE THE LIST IN DROPDOWN
+ */
 export function updateListTag (recipesAfterSearch, newList, name) {
   if (newList.length === 0) {
     let arrayUpdate

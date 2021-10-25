@@ -1,7 +1,9 @@
 import { Dropdown } from '../class/Dropdown.js'
 import { dropdownArray } from './updateListTag.js'
 
-// DISPLAY DROPDOWN
+/**
+ * DISPLAY DROPDOWN
+ */
 export function displayDropdown () {
   const sectionFilter = document.getElementById('filter')
   sectionFilter.innerHTML = ''
@@ -11,7 +13,9 @@ export function displayDropdown () {
   })
 }
 
-// DISPLAY LIST
+/**
+ * DISPLAY LIST IN DROPDOWN
+ */
 export function displayList () {
   const ulContainer = document.querySelectorAll('section#filter ul.dropdown ul.list')
   let count = -1
