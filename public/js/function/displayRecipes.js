@@ -30,7 +30,7 @@ export function displaySearchRecipesInput (theValue, recipesAfterSearch = []) {
       templateRecipes(idRecipe)
     } else {
       if (sectionRecipes.innerHTML === '') {
-        noResult.innerHTML = '<i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère'
+        noResult.innerHTML = '<span><i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère</span>'
       }
     }
   })
@@ -71,7 +71,7 @@ export function displaySearchRecipesTag (tagValue, recipesAfterSearch) {
       recipesAfterSearch = arrayUpdate
     } else {
       if (sectionRecipes.innerHTML === '') {
-        noResult.innerHTML = '<i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère'
+        noResult.innerHTML = '<span><i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère</span>'
       }
     }
   })

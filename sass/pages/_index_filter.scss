@@ -6,17 +6,16 @@
     display: block;
     @include media(phone) {
       width: 100%;
-      margin: 0 0px 20px 0px;
+      margin: 0px 0px 20px 0px;
       height: max-content;
     }
     @include media(desktop) {
       width: 170px;
-      margin: 0 20px 0 0px;
+      margin: 0px 20px 0 0px;
       height: 69px;
     }
     list-style: none;
     position: relative;
-    
     cursor: pointer;
     padding: 0 0 0;
     border-radius: 5px;
@@ -41,7 +40,7 @@
       justify-content: space-between;
       border-radius: 5px;
       input {
-        width: 223px;
+        width: 100%;
         height: 100%;
         background-color: transparent;
         @include font-size(18);
@@ -79,7 +78,15 @@
           text-overflow: ellipsis;
           font-weight: 400;
           position: relative;
-          @include font-size(18);
+          @include media(phone) {
+            @include font-size(16);
+          }
+          @include media(desktop) {
+            @include font-size(15);
+          }
+          @include media(big) {
+            @include font-size(18);
+          }
           &::first-letter {
             text-transform: uppercase; 
           }
@@ -103,6 +110,7 @@
   }
   ul.dropdown:last-child {
     margin-right: 0px;
+    margin-bottom: 0px;
   }
   ul.dropdown.arrowOpen {
     border-radius : 5px 5px 0px 0px !important;

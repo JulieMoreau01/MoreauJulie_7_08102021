@@ -58,14 +58,14 @@ header figure img {
 @media screen and (min-width: 0px) {
   #filter ul.dropdown {
     width: 100%;
-    margin: 0 0px 20px 0px;
+    margin: 0px 0px 20px 0px;
     height: max-content;
   }
 }
 @media screen and (min-width: 1024px) {
   #filter ul.dropdown {
     width: 170px;
-    margin: 0 20px 0 0px;
+    margin: 0px 20px 0 0px;
     height: 69px;
   }
 }
@@ -91,7 +91,7 @@ header figure img {
   border-radius: 5px;
 }
 #filter ul.dropdown li#selected input {
-  width: 223px;
+  width: 100%;
   height: 100%;
   background-color: transparent;
   font-size: 1.125rem;
@@ -130,7 +130,21 @@ header figure img {
   text-overflow: ellipsis;
   font-weight: 400;
   position: relative;
-  font-size: 1.125rem;
+}
+@media screen and (min-width: 0px) {
+  #filter ul.dropdown li.list-container ul.list li.list-item {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #filter ul.dropdown li.list-container ul.list li.list-item {
+    font-size: 0.9375rem;
+  }
+}
+@media screen and (min-width: 1281px) {
+  #filter ul.dropdown li.list-container ul.list li.list-item {
+    font-size: 1.125rem;
+  }
 }
 #filter ul.dropdown li.list-container ul.list li.list-item::first-letter {
   text-transform: uppercase;
@@ -151,6 +165,7 @@ header figure img {
 }
 #filter ul.dropdown:last-child {
   margin-right: 0px;
+  margin-bottom: 0px;
 }
 #filter ul.dropdown.arrowOpen {
   border-radius: 5px 5px 0px 0px !important;
@@ -341,7 +356,7 @@ header figure img {
   border: 0px;
   border-radius: 5px;
   padding: 22px;
-  margin: 0 0 25px 0;
+  margin-bottom: 20px;
   display: block;
 }
 #search input:placeholder-shown {
@@ -367,6 +382,11 @@ header figure img {
 }
 #search p#no_result {
   color: orange;
+  margin: 0px;
+}
+#search p#no_result span {
+  display: block;
+  margin-bottom: 20px;
 }
 
 #tag ul {
@@ -374,13 +394,15 @@ header figure img {
   margin: 0px;
   padding: 0px;
   display: flex;
-  margin: 0 0 20px 0;
+  flex-wrap: wrap;
+  margin: 0 0 0px 0;
 }
 #tag ul li {
   height: 37px;
   border-radius: 5px;
   padding: 10px 20px;
   margin-right: 15px;
+  margin-bottom: 15px;
   font-weight: 700;
   color: white;
   display: flex;
@@ -400,6 +422,14 @@ header figure img {
 }
 #tag ul li.ustensiles {
   background-color: #ED6454;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: flex;
 }
 
 /*# sourceMappingURL=style.css.map */
