@@ -19,6 +19,8 @@ export function templateRecipes (idRecipe) {
  */
 export function displaySearchRecipesInput (theValue, recipesAfterSearch = []) {
   cleanRecipes.forEach(recipe => {
+    const test = recipe.toString().toLowerCase()
+    console.log(test)
     const nameRecipe = recipe[1].toString().toLowerCase()
     const descriptionRecipe = recipe[5].toString().toLowerCase()
     const ingredients = recipe[3].toString().toLowerCase()
