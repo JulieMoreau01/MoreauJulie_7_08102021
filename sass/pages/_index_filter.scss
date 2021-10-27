@@ -84,7 +84,7 @@
           @include media(desktop) {
             @include font-size(15);
           }
-          @include media(big) {
+          @include media(bigDesktop) {
             @include font-size(18);
           }
           &::first-letter {
@@ -120,7 +120,7 @@
     @include media(desktop) {
       width: 40vh;
     }
-    @include media(big) {
+    @include media(bigDesktop) {
       width: 70vh;
     }
   }
@@ -175,7 +175,7 @@
     @include media(desktop) {
       width: 40vh;
     }
-    @include media(big) {
+    @include media(bigDesktop) {
       width: 70vh;
     }
   }
