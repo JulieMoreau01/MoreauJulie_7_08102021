@@ -8,7 +8,7 @@
 $breakpoint : (
     "phone": 0px,
     "desktop": 1024px,
-    "big": 1281px,
+    "bigDesktop": 1281px,
 );
 
 // Breakpoint Mixin
@@ -17,3 +17,4 @@ $breakpoint : (
         @content
     } 
 }
+

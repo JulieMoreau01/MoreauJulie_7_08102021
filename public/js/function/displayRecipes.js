@@ -74,10 +74,10 @@ export function displaySearchRecipesTag (tagValue, recipesAfterSearch) {
       arrayUpdate.push(recipe)
       arrayUpdate.splice(0, arrayUpdate.length, ...(new Set(arrayUpdate)))
       recipesAfterSearch = arrayUpdate
-    } else {
-      if (sectionRecipes.innerHTML === '') {
-        noResult.innerHTML = '<span><i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère</span>'
-      }
+    // } else {
+    //   if (sectionRecipes.innerHTML === '') {
+    //     noResult.innerHTML = '<span><i class="fas fa-exclamation-circle"></i> Aucune recette ne correspond à votre critère</span>'
+    //   }
     }
   })
   // Mise à jour des listes de Tag

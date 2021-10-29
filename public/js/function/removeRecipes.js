@@ -40,8 +40,8 @@ function removeDisplaySearchRecipesTag (tag) {
   const inputValue = input.value.toLowerCase()
   const listOfTag = []
   tag.forEach(item => {
-    const machin = item.textContent.toLowerCase()
-    listOfTag.push(machin)
+    const listOfDropdownTag = item.textContent.toLowerCase()
+    listOfTag.push(listOfDropdownTag)
   })
   if (inputValue !== '') {
     listOfTag.unshift(inputValue)
